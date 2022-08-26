@@ -41,7 +41,7 @@ module ex(
             logicout <= `ZeroWord;
         end else begin
             case (aluop_i)
-                `EXE_OR_OP:begin
+                `EXE_OR_OP: begin
                     logicout <= reg1_i | reg2_i;
                 end
                 default: begin

@@ -27,6 +27,15 @@ module id(
     input wire[`InstBus] inst_i,
     input wire[`RegBus] reg1_data_i,
     input wire[`RegBus] reg2_data_i,
+    
+    // added for receiving reg message from exe and mem period
+    input wire[0:0] ex_wreg_i, // whether exe write into reg
+    input wire[`RegAddrBus] ex_wd_i,// write into which reg
+    input wire[`RegBus] ex_wdata_i, //write what into reg
+    input wire[0:0] mem_wreg_i, // whether read data from mem to reg
+    input wire[`RegAddrBus] mem_wd_i,
+    input wire[`RegBus] mem_wdata_i,
+
     output reg reg1_read_o,
     output reg reg2_read_o,
     output reg[`RegAddrBus] reg1_addr_o,
@@ -67,27 +76,28 @@ module id(
             instvalid <= `InstValid;
             reg1_read_o <= 1'b0;
             reg2_read_o <= 1'b0;
-            // 端口1
+            // 锟剿匡拷1
             reg1_addr_o <= inst_i[25:21];
-            // 端口2
+            // 锟剿匡拷2
             reg2_addr_o <= inst_i[20:16];
             imm <= `ZeroWord;
             case (op)
                 `EXE_ORI: begin
-                    // 需要写存
+                    // write enabled
                     wreg_o <= `WriteEnable;
-                    // 逻辑或
+                    // switch alu into 'or' mode
                     aluop_o <= `EXE_OR_OP;
-                    // 运算类型
+                    // select logic operation for alu
                     alusel_o <= `EXE_RES_LOGIC;
-                    // 需要读端口1
+                    // reg 1 read needed
                     reg1_read_o <= 1'b1;
-                    // 不需要读端口2
+                    // reg 2 read not need (imm)
                     reg2_read_o <= 1'b0;
-                    // 零扩展立即数
+                    // get imm from inst
                     imm <= {16'h0, inst_i[15:0]};
-                    // 需要写端口
+                    // dst reg addr
                     wd_o <= inst_i[20:16];
+                    // is valid inst
                     instvalid <= `InstValid;
                 end
                 default: begin
@@ -99,6 +109,10 @@ module id(
     always @(*) begin
         if (rst == `RstEnable) begin
             reg1_o <= `ZeroWord;
+        end else if ((reg1_read_o == 1'b1) && (ex_wreg_i == 1'b1) && (ex_wd_i == reg1_addr_o)) begin
+            reg1_o <= ex_wdata_i;
+        end else if ((reg1_read_o == 1'b1) && (mem_wreg_i == 1'b1) && (mem_wd_i == reg1_addr_o)) begin
+            reg1_o <= mem_wdata_i;
         end else if (reg1_read_o == 1'b1) begin
             reg1_o <= reg1_data_i;
         end else if (reg1_read_o == 1'b0) begin
@@ -111,6 +125,10 @@ module id(
     always @(*) begin
         if (rst == `RstEnable) begin
             reg2_o <= `ZeroWord;
+        end else if ((reg2_read_o == 1'b1) && (ex_wreg_i == 1'b1) && (ex_wd_i == reg2_addr_o)) begin
+            reg2_o <= ex_wdata_i;
+        end else if ((reg2_read_o == 1'b1) && (mem_wreg_i == 1'b1) && (mem_wd_i == reg2_addr_o)) begin
+            reg2_o <= mem_wdata_i;
         end else if (reg2_read_o == 1'b1) begin
             reg2_o <= reg2_data_i;
         end else if (reg2_read_o == 1'b0) begin

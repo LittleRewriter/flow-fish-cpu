@@ -47,16 +47,16 @@ module regfile(
     end
     
     always @ (*) begin
-        // reset »ò a0
+        // reset ï¿½ï¿½ a0
         if (rst == `RstEnable) begin
             rdata1 <= `ZeroWord;
         end else if (raddr1 == `RegNumLog2'h0) begin
             rdata1 <= `ZeroWord;
-        // Í¬Ò»Ê±¿ÌµÄÐ´ÈëºÍ¶Á³öÐÅºÅ
+        // if read-opr is in id, and write opr before is in wb, then directly read the writing data
         end else if ((raddr1 == waddr) && (we == `WriteEnable)
                         && (re1 == `ReadEnable)) begin
             rdata1 <= wdata;
-        // Ö±½Ó¶Á³ö
+        // Ö±ï¿½Ó¶ï¿½ï¿½ï¿½
         end else if (re1 == `ReadEnable) begin
             rdata1 <= regs[raddr1];
         end else begin
@@ -65,16 +65,16 @@ module regfile(
     end
     
      always @ (*) begin
-        // reset »ò a0
+        // reset ï¿½ï¿½ a0
         if (rst == `RstEnable) begin
             rdata2 <= `ZeroWord;
         end else if (raddr2 == `RegNumLog2'h0) begin
             rdata2 <= `ZeroWord;
-        // Í¬Ò»Ê±¿ÌµÄÐ´ÈëºÍ¶Á³öÐÅºÅ
+        // Í¬Ò»Ê±ï¿½Ìµï¿½Ð´ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ï¿½Åºï¿½
         end else if ((raddr2 == waddr) && (we == `WriteEnable)
                         && (re2 == `ReadEnable)) begin
             rdata2 <= wdata;
-        // Ö±½Ó¶Á³ö
+        // Ö±ï¿½Ó¶ï¿½ï¿½ï¿½
         end else if (re2 == `ReadEnable) begin
             rdata2 <= regs[raddr2];
         end else begin

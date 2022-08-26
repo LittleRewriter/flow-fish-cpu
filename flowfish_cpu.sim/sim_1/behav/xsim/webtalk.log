@@ -10,3 +10,5 @@
 # Journal file: D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim\webtalk.jou
 #-----------------------------------------------------------
 source D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Fri Aug 26 21:37:15 2022. For additional details about this file, please refer to the WebTalk help file at D:/Xilinx/Vivado/2019.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Fri Aug 26 21:37:15 2022...
