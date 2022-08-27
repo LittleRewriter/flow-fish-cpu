@@ -34,6 +34,15 @@
 `define FUNC_SRLV       6'b000110
 `define FUNC_SRAV       6'b000111
 `define FUNC_SYNC       6'b001111
+`define FUNC_MOVZ       6'b001010
+`define FUNC_MOVN       6'b001011
+`define FUNC_MFHI       6'b010000
+`define FUNC_MFLO       6'b010010
+`define FUNC_MTHI       6'b010001
+`define FUNC_MTLO       6'b010011
+
+`define FUNC_SLTU       6'b001111
+`define FUNC_SLTI       6'b001111
 // Alu operators
 `define EXE_OR_OP       8'b00100101
 `define EXE_AND_OP      8'b00100100
@@ -45,6 +54,7 @@
 `define EXE_SRA_OP      8'b00000011
 // Alu sel
 `define EXE_RES_LOGIC   3'b001
+`define EXE_RES_MOV     3'b000
 `define EXE_RES_SHIFT   3'b000
 `define EXE_RES_NOP     3'b000
 

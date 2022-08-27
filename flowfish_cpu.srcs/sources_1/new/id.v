@@ -86,16 +86,48 @@ module id(
                 `EXE_SPECIAL: begin
                     case(op2)
                         5'b00000: begin
-                            wreg_o <= `WriteEnable;
-                            // observe that aluop is:
-                            // 1. concat 00 to inst code, for and or nor xor
-                            // 2. concat 00 to inst code and set bitstream[2] as 1, for sllv srlv srav 
-                            aluop_o <= {2'b00, func}|8'h04;
+                            
+                            case(func) begin
+                                `FUNC_MOVN: begin
+                                    if(reg2_o == `ZeroWord) begin
+                                        wreg_o <= `WriteEnable;
+                                    end else begin
+                                        wreg_o <= `WriteDisable;
+                                    end
+                                    wreg_o <= `WriteEnable;
+                                    aluop_o <= {2'b00, func}|8'h04;
 
-                            alusel_o <= `EXE_RES_LOGIC;
-                            reg1_addr_o <= 1'b1;
-                            reg2_read_o <= 1'b1;
-                            instvalid <= `InstValid;
+                                    alusel_o <= `EXE_RES_MOVE;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
+                                `FUNC_MOVZ: begin
+                                    if(reg2_o == `ZeroWord) begin
+                                        wreg_o <= `WriteEnable;
+                                    end else begin
+                                        wreg_o <= `WriteDisable;
+                                    end
+                                    aluop_o <= {2'b00, func}|8'h04;
+
+                                    alusel_o <= `EXE_RES_MOVE;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
+                                default: begin
+                                    wreg_o <= `WriteEnable;
+                                    // observe that aluop is:
+                                    // 1. concat 00 to inst code, for and or nor xor
+                                    // 2. concat 00 to inst code and set bitstream[2] as 1, for sllv srlv srav 
+                                    aluop_o <= {2'b00, func}|8'h04;
+
+                                    alusel_o <= `EXE_RES_LOGIC;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
+                            end
                         end
                         default: begin
                             

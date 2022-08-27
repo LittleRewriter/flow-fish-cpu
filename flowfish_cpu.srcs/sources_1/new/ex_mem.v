@@ -31,6 +31,7 @@ module ex_mem(
     output reg mem_wreg,
     output reg[`RegBus] mem_wdata
     );
+    
     always @(posedge clk) begin
         if(rst == `RstEnable) begin
             mem_wd <= `NOPRegAddr;
