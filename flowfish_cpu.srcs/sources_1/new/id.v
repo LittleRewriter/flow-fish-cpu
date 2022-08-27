@@ -48,10 +48,11 @@ module id(
     output reg wreg_o
     );
     
-    wire[5:0] op = inst_i[31:26];
+    wire[5:0] inst = inst_i[31:26];
     wire[4:0] op2 = inst_i[10:6];
-    wire[5:0] op3 = inst_i[5:0];
+    wire[5:0] func = inst_i[5:0];
     wire[4:0] op4 = inst_i[20:16];
+    wire[10:0] op5 = inst_i[31:21];
     
     reg[`RegBus] imm;
     reg instvalid;
@@ -76,12 +77,31 @@ module id(
             instvalid <= `InstValid;
             reg1_read_o <= 1'b0;
             reg2_read_o <= 1'b0;
-            // �˿�1
+            // get reg1 addr from inst
             reg1_addr_o <= inst_i[25:21];
-            // �˿�2
+            // get reg2 addr from inst
             reg2_addr_o <= inst_i[20:16];
             imm <= `ZeroWord;
-            case (op)
+            case (inst)
+                `EXE_SPECIAL: begin
+                    case(op2)
+                        5'b00000: begin
+                            wreg_o <= `WriteEnable;
+                            // observe that aluop is:
+                            // 1. concat 00 to inst code, for and or nor xor
+                            // 2. concat 00 to inst code and set bitstream[2] as 1, for sllv srlv srav 
+                            aluop_o <= {2'b00, func}|8'h04;
+
+                            alusel_o <= `EXE_RES_LOGIC;
+                            reg1_addr_o <= 1'b1;
+                            reg2_read_o <= 1'b1;
+                            instvalid <= `InstValid;
+                        end
+                        default: begin
+                            
+                        end
+                    endcase
+                end
                 `EXE_ORI: begin
                     // write enabled
                     wreg_o <= `WriteEnable;
@@ -100,9 +120,72 @@ module id(
                     // is valid inst
                     instvalid <= `InstValid;
                 end
+                `EXE_ANDI: begin
+                    wreg_o <= `WriteEnable;
+                    aluop_o <= `EXE_AND_OP;
+                    alusel_o <= `EXE_RES_LOGIC;
+                    reg1_read_o <= 1'b1;
+                    reg2_read_o <= 1'b0;
+                    imm <= {16'h0, inst_i[15:0]};
+                    wd_o <= inst_i[20:16];
+                    instvalid <= `InstValid;
+                end
+                `EXE_XORI: begin
+                    wreg_o <= `WriteEnable;
+                    aluop_o <= `EXE_XOR_OP;
+                    alusel_o <= `EXE_RES_LOGIC;
+                    reg1_read_o <= 1'b1;
+                    reg2_read_o <= 1'b0;
+                    imm <= {16'h0, inst_i[15:0]};
+                    wd_o <= inst_i[20:16];
+                    instvalid <= `InstValid;
+                end
+                `EXE_LUI: begin
+                    wreg_o <= `WriteEnable;
+                    aluop_o <= `EXE_XOR_OP;
+                    alusel_o <= `EXE_RES_LOGIC;
+                    reg1_read_o <= 1'b1;
+                    reg2_read_o <= 1'b0;
+                    imm <= {inst_i[15:0], 16'h0};
+                    wd_o <= inst_i[20:16];
+                    instvalid <= `InstValid;
+                end
+                `EXE_PREF: begin
+                    wreg_o <= `WriteDisable;
+                    aluop_o <= `EXE_NOP_OP;
+                    alusel_o <= `EXE_RES_NOP;
+                    reg1_read_o <= 1'b0;
+                    reg2_read_o <= 1'b0;
+                    instvalid <= `InstValid;
+                end
                 default: begin
+
                 end
             endcase
+
+            if(op5 == 11'h0) begin
+                wreg_o <= `WriteEnable;
+                alusel_o <= `EXE_RES_SHIFT;
+                reg1_read_o <= 1'b0;
+                reg2_read_o <= 1'b1;
+                imm[4:0] <= inst_i[10:6];
+                wd_o <= inst_i[15:11];
+                instvalid <= `InstValid;
+                case (func)
+                    `FUNC_SLL: begin
+                        aluop_o <= `EXE_SLL_OP;
+                    end
+                    `FUNC_SRL: begin
+                        aluop_o <= `EXE_SRL_OP;
+                    end
+                    `FUNC_SRA: begin
+                        aluop_o <= `EXE_SRA_OP;
+                    end 
+                    default: begin 
+                        
+                    end 
+                endcase
+            end
         end
     end
     
