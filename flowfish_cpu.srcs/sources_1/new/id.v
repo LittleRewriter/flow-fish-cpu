@@ -95,7 +95,7 @@ module id(
                                         wreg_o <= `WriteDisable;
                                     end
                                     wreg_o <= `WriteEnable;
-                                    aluop_o <= {2'b00, func}|8'h04;
+                                    aluop_o <= {2'b00, func};
 
                                     alusel_o <= `EXE_RES_MOVE;
                                     reg1_addr_o <= 1'b1;
@@ -108,14 +108,75 @@ module id(
                                     end else begin
                                         wreg_o <= `WriteDisable;
                                     end
-                                    aluop_o <= {2'b00, func}|8'h04;
+                                    aluop_o <= {2'b00, func};
 
                                     alusel_o <= `EXE_RES_MOVE;
                                     reg1_addr_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
                                 end
+                                `FUNC_SLT: begin
+                                    wreg_o <= `WriteEnable;
+
+                                    aluop_o <= {2'b00, func};
+
+                                    alusel_o <= `EXE_RES_ARITHMETIC;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
+                                `FUNC_SLTU: begin
+                                    wreg_o <= `WriteEnable;
+
+                                    aluop_o <= {2'b00, func};
+
+                                    alusel_o <= `EXE_RES_ARITHMETIC;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
+                                `FUNC_ADD: begin
+                                    wreg_o <= `WriteEnable;
+
+                                    aluop_o <= {2'b00, func};
+
+                                    alusel_o <= `EXE_RES_ARITHMETIC;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
+                                `FUNC_ADDU: begin
+                                    wreg_o <= `WriteEnable;
+
+                                    aluop_o <= {2'b00, func};
+
+                                    alusel_o <= `EXE_RES_ARITHMETIC;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
+                                `FUNC_SUB: begin
+                                    wreg_o <= `WriteEnable;
+
+                                    aluop_o <= {2'b00, func};
+
+                                    alusel_o <= `EXE_RES_ARITHMETIC;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
+                                `FUNC_SUBU: begin
+                                    wreg_o <= `WriteEnable;
+
+                                    aluop_o <= {2'b00, func};
+
+                                    alusel_o <= `EXE_RES_ARITHMETIC;
+                                    reg1_addr_o <= 1'b1;
+                                    reg2_read_o <= 1'b1;
+                                    instvalid <= `InstValid;
+                                end
                                 default: begin
+                                    // for shift and logic
                                     wreg_o <= `WriteEnable;
                                     // observe that aluop is:
                                     // 1. concat 00 to inst code, for and or nor xor
@@ -182,6 +243,36 @@ module id(
                     wd_o <= inst_i[20:16];
                     instvalid <= `InstValid;
                 end
+                `EXE_SLTI: begin
+                    wreg_o <= `WriteEnable;
+                    aluop_o <= {2'b00, func};
+                    alusel_o <= `EXE_RES_ARITHMETIC;
+                    reg1_read_o <= `ReadEnable;
+                    reg2_read_o <= `ReadDisable;
+                    imm <= {{16{inst_i[15]}}, inst_i[15:0]};
+                    wd_o <= inst_i[20:16];
+                    instvalid <= `InstValid;
+                end
+                `EXE_ADDI: begin
+                    wreg_o <= `WriteEnable;
+                    aluop_o <= {2'b00, func};
+                    alusel_o <= `EXE_RES_ARITHMETIC;
+                    reg1_read_o <= `ReadEnable;
+                    reg2_read_o <= `ReadDisable;
+                    imm <= {{16{inst_i[15]}}, inst_i[15:0]};
+                    wd_o <= inst_i[20:16];
+                    instvalid <= `InstValid;
+                end
+                `EXE_ADDIU: begin
+                    wreg_o <= `WriteEnable;
+                    aluop_o <= {2'b00, func};
+                    alusel_o <= `EXE_RES_ARITHMETIC;
+                    reg1_read_o <= `ReadEnable;
+                    reg2_read_o <= `ReadDisable;
+                    imm <= {{16{inst_i[15]}}, inst_i[15:0]};
+                    wd_o <= inst_i[20:16];
+                    instvalid <= `InstValid;
+                end
                 `EXE_PREF: begin
                     wreg_o <= `WriteDisable;
                     aluop_o <= `EXE_NOP_OP;
@@ -189,6 +280,21 @@ module id(
                     reg1_read_o <= 1'b0;
                     reg2_read_o <= 1'b0;
                     instvalid <= `InstValid;
+                end
+                `EXE_SPECIAL2: begin
+                    case(func): begin
+                        `FUNC_MUL: begin
+                            wreg_o <= `WriteEnable;
+                            aluop_o <= {2'b00, func};
+                            alusel_o <= EXE_RES_MUL;
+                            reg1_read_o <= `ReadEnable;
+                            reg2_read_o <= `ReadEnable;
+                            instvalid <= `InstValid;
+                        end
+                        default: begin
+                            
+                        end
+                    end
                 end
                 default: begin
 

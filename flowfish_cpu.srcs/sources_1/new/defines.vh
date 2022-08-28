@@ -22,6 +22,11 @@
 `define EXE_PREF        6'b110011
 `define EXE_NOP         6'b000000
 `define EXE_SPECIAL     6'b000000
+`define EXE_SPECIAL2    6'b011100
+`define EXE_REGIMM      6'b000001
+`define EXE_ADDI        6'b001000
+`define EXE_ADDIU       6'b001001
+`define EXE_SLTI        6'b001010
 // function code, for inst_code is 6'b000000
 `define FUNC_AND        6'b100100
 `define FUNC_OR         6'b100101
@@ -40,9 +45,13 @@
 `define FUNC_MFLO       6'b010010
 `define FUNC_MTHI       6'b010001
 `define FUNC_MTLO       6'b010011
-
-`define FUNC_SLTU       6'b001111
-`define FUNC_SLTI       6'b001111
+`define FUNC_ADD        6'b100000
+`define FUNC_ADDU       6'b100001
+`define FUNC_SUB        6'b100010
+`define FUNC_SUBU       6'b100011
+`define FUNC_SLT        6'b101010
+`define FUNC_SLTU       6'b101011
+`define FUNC_MUL        6'b000010
 // Alu operators
 `define EXE_OR_OP       8'b00100101
 `define EXE_AND_OP      8'b00100100
@@ -54,9 +63,11 @@
 `define EXE_SRA_OP      8'b00000011
 // Alu sel
 `define EXE_RES_LOGIC   3'b001
-`define EXE_RES_MOV     3'b000
+`define EXE_RES_MOV     3'b011
 `define EXE_RES_SHIFT   3'b000
 `define EXE_RES_NOP     3'b000
+`define EXE_RES_ARITHMETIC 3'b100
+`define EXE_RES_MUL     3'b101
 
 // Storage related
 `define InstAddrBus     31:0
@@ -69,7 +80,7 @@
 `define RegBus          31:0
 `define RegWidth        32
 `define DoubleRegWidth  64
-`define DoubleRegBus    64
+`define DoubleRegBus    63:0
 `define RegNum          32
 `define RegNumLog2      5
 `define NOPRegAddr      5'b00000
