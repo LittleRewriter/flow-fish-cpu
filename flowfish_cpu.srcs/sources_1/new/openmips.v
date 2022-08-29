@@ -25,7 +25,13 @@ module openmips(
     input wire rst,
     input wire[`RegBus] rom_data_i,
     output wire[`RegBus] rom_addr_o,
-    output wire rom_ce_o
+    output wire rom_ce_o,
+
+    input wire[`DataBus] ram_data_i,
+    output wire[`DataAddrBus] ram_addr_o,
+    output wire[`DataBus] ram_data_o,
+    output wire ram_we_o,
+    output wire ram_ce_o
     );
     
     wire[`InstAddrBus] pc;
@@ -38,6 +44,7 @@ module openmips(
     wire[`RegBus] id_reg2_o;
     wire id_wreg_o;
     wire[`RegAddrBus] id_wd_o;
+    wire[`InstBus] id_inst_o;
     
     wire[`AluOpBus] ex_aluop_i;
     wire[`AluSelBus] ex_alusel_i;
@@ -45,14 +52,21 @@ module openmips(
     wire[`RegBus] ex_reg2_i;
     wire ex_wreg_i;
     wire[`RegAddrBus] ex_wd_i;
+    wire[`InstBus] ex_inst_i;
     
     wire ex_wreg_o;
     wire[`RegAddrBus] ex_wd_o;
     wire[`RegBus] ex_wdata_o;
+    wire[`AluOpBus] ex_aluop_o;
+    wire[`RegBus] ex_reg2_o;
+    wire[`DataAddrBus] ex_mem_addr;
+
     
     wire mem_wreg_i;
     wire[`RegAddrBus] mem_wd_i;
     wire[`RegBus] mem_wdata_i;
+    wire[`RegBus] mem_reg2_i;
+    wire[`DataAddrBus] mem_addr_i;
     
     wire mem_wreg_o;
     wire[`RegAddrBus] mem_wd_o;
@@ -97,7 +111,8 @@ module openmips(
         .mem_wdata_i(mem_wdata_o),
         .aluop_o(id_aluop_o), .alusel_o(id_alusel_o),
         .reg1_o(id_reg1_o), .reg2_o(id_reg2_o),
-        .wd_o(id_wd_o), .wreg_o(id_wreg_o)
+        .wd_o(id_wd_o), .wreg_o(id_wreg_o),
+        .inst_id_o(id_inst_o)
     );
     
     regfile regfile1(
@@ -108,40 +123,78 @@ module openmips(
         .re2(reg2_read), .raddr2(reg2_addr),
         .rdata2(reg2_data)  
     );
-    
+
     id_ex id_ex0(
-        .clk(clk), .rst(rst),
-        .id_aluop(id_aluop_o), .id_alusel(id_alusel_o),
-        .id_reg1(id_reg1_o), .id_reg2(id_reg2_o),
-        .id_wd(id_wd_o), .id_wreg(id_wreg_o),
-        .ex_aluop(ex_aluop_i), .ex_alusel(ex_alusel_i),
-        .ex_reg1(ex_reg1_i), .ex_reg2(ex_reg2_i),
-        .ex_wd(ex_wd_i), .ex_wreg(ex_wreg_i)
+    	.rst       (rst         ),
+        .clk       (clk         ),
+        .id_alusel (id_alusel_o ),
+        .id_aluop  (id_aluop_o  ),
+        .id_reg1   (id_reg1_o   ),
+        .id_reg2   (id_reg2_o   ),
+        .id_wd     (id_wd_o     ),
+        .id_wreg   (id_wreg_o   ),
+        .id_inst   (id_inst_o   ),
+        .ex_alusel (ex_alusel_i ),
+        .ex_aluop  (ex_aluop_i  ),
+        .ex_reg1   (ex_reg1_i   ),
+        .ex_reg2   (ex_reg2_i   ),
+        .ex_wd     (ex_wd_i     ),
+        .ex_wreg   (ex_wreg_i   ),
+        .ex_inst   (ex_inst_i   )
     );
-    
+
     ex ex0(
-        .rst(rst),
-        .aluop_i(ex_aluop_i), .alusel_i(ex_alusel_i),
-        .reg1_i(ex_reg1_i), .reg2_i(ex_reg2_i),
-        .wd_i(ex_wd_i), .wreg_i(ex_wreg_i),
-        .wd_o(ex_wd_o), .wreg_o(ex_wreg_o),
-        .wdata_o(ex_wdata_o)
+    	.rst        (rst        ),
+        .aluop_i    (ex_aluop_i ),
+        .alusel_i   (ex_alusel_i),
+        .reg1_i     (ex_reg1_i  ),
+        .reg2_i     (ex_reg2_i  ),
+        .wd_i       (ex_wd_i    ),
+        .wreg_i     (ex_wreg_i  ),
+        .cnt_i      (ex_cnt_i   ),
+        .inst_i     (ex_inst_i  ),
+        .cnt_o      (ex_cnt_o   ),
+        .wd_o       (ex_wd_o    ),
+        .wreg_o     (ex_wreg_o  ),
+        .wdata_o    (ex_wdata_o ),
+        .aluop_o    (ex_aluop_o ),
+        .mem_addr_o (mem_addr_o ),
+        .reg2_o     (ex_reg2_o  )
     );
-    
+
     ex_mem ex_mem0(
-        .clk(clk), .rst(rst),
-        .ex_wd(ex_wd_o), .ex_wreg(ex_wreg_o),
-        .ex_wdata(ex_wdata_o),
-        .mem_wd(mem_wd_i), .mem_wreg(mem_wreg_i),
-        .mem_wdata(mem_wdata_i)
+    	.rst          (rst         ),
+        .clk          (clk         ),
+        .ex_wd        (ex_wd_o     ),
+        .ex_wreg      (ex_wreg_o   ),
+        .ex_wdata     (ex_wdata_o  ),
+        .ex_aluop     (ex_aluop_o  ),
+        .ex_mem_addr  (ex_mem_addr ),
+        .ex_reg2      (ex_reg2     ),
+        .mem_wd       (mem_wd_i    ),
+        .mem_wreg     (mem_wreg_i  ),
+        .mem_wdata    (mem_wdata_i ),
+        .mem_aluop    (mem_aluop_i ),
+        .mem_mem_addr (mem_addr_i  ),
+        .mem_reg2     (mem_reg2_i  )
     );
-    
+
     mem mem0(
-        .rst(rst),
-        .wd_i(mem_wd_i), .wreg_i(mem_wreg_i),
-        .wdata_i(mem_wdata_i),
-        .wd_o(mem_wd_o), .wreg_o(mem_wreg_o),
-        .wdata_o(mem_wdata_o)
+    	.rst        (rst        ),
+        .wd_i       (mem_wd_i   ),
+        .wreg_i     (mem_wreg_i ),
+        .wdata_i    (mem_wdata_i),
+        .aluop_i    (mem_aluop_i),
+        .mem_addr_i (mem_addr_i ),
+        .reg2_i     (mem_reg2_i ),
+        .mem_data_i (ram_data_i ),
+        .wd_o       (mem_wd_o   ),
+        .wreg_o     (mem_wreg_o ),
+        .wdata_o    (mem_wdata_o),
+        .mem_addr_o (ram_addr_o ),
+        .mem_we_o   (ram_we_o   ),
+        .mem_data_o (ram_data_o ),
+        .mem_ce_o   (ram_ce_o   )
     );
     
     mem_wb mem_wb0(

@@ -45,7 +45,8 @@ module id(
     output reg[`RegBus] reg1_o,
     output reg[`RegBus] reg2_o,
     output reg[`RegAddrBus] wd_o,
-    output reg wreg_o
+    output reg wreg_o,
+    output wire[`InstBus] inst_id_o
     );
     
     wire[5:0] inst = inst_i[31:26];
@@ -56,6 +57,8 @@ module id(
     
     reg[`RegBus] imm;
     reg instvalid;
+
+    assign inst_id_o = inst_i;
     
     always @(*) begin
         if (rst == `RstEnable) begin
@@ -294,6 +297,23 @@ module id(
                             
                         end
                     endcase
+                end
+                `EXE_LW:begin
+                    wreg_o <= `WriteEnable;
+                    aluop_o <= `EXE_LW;
+                    alusel_o <= `EXE_RES_LOAD_STORE;
+                    reg1_read_o <= `ReadEnable;
+                    reg2_read_o <= `ReadDisable;
+                    wd_o <= inst_i[20:16];
+                    instvalid <= `InstValid;
+                end
+                `EXE_SW: begin
+                    wreg_o <=`WriteDisable;
+                    aluop_o <= `EXE_SW;
+                    alusel_o <= `EXE_RES_LOAD_STORE;
+                    reg1_read_o <= `ReadEnable;
+                    reg2_read_o <= `ReadEnable;
+                    instvalid <= `InstValid;
                 end
                 default: begin
 

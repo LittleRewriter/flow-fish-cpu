@@ -29,12 +29,15 @@ module ex(
     input wire[`RegBus] reg2_i,
     input wire[`RegAddrBus] wd_i,
     input wire wreg_i,
-
     input wire[1:0] cnt_i, // at which period
+    input wire[`InstBus] inst_i, 
     output wire[1:0] cnt_o, // next period
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
-    output reg[`RegBus] wdata_o
+    output reg[`RegBus] wdata_o,
+    output wire[`AluOpBus] aluop_o,
+    output wire[`RegBus] mem_addr_o,
+    output wire[`RegBus] reg2_o
     );
     
     reg[`RegBus] logicout;
@@ -52,6 +55,10 @@ module ex(
     wire[`RegBus] opdata2_mult;
     wire[`DoubleRegBus] hilo_temp;
     reg[`DoubleRegBus] mulres;
+
+    assign aluop_o = aluop_i;
+    assign mem_addr_o = reg1_i + {{16{inst_i[15]}}, inst_i[15:0]};
+    assign reg2_o = reg2_i;
 
     // reg2 is reg2's complement if sub
     assign reg2_i_mux = ((aluop_i == {2'b00, `FUNC_SUB}) ||

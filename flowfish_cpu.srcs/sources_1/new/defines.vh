@@ -70,12 +70,17 @@
 `define EXE_RES_NOP     3'b000
 `define EXE_RES_ARITHMETIC 3'b100
 `define EXE_RES_MUL     3'b101
+`define EXE_RES_LOAD_STORE 3'b110
 
 // Storage related
 `define InstAddrBus     31:0
 `define InstBus         31:0
 `define InstMemNum      1023
 `define InstMemNumLog2  10
+`define DataAddrBus     31:0
+`define DataBus         31:0
+`define DataMemNum      1048575
+`define DataMemNumLog2  20
 
 // Regfile related
 `define RegAddrBus      4:0
