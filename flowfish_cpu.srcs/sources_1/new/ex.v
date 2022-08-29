@@ -34,7 +34,7 @@ module ex(
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
     output reg[`RegBus] wdata_o,
-    output wire stallreq_from_ex
+    output reg stallreq_from_ex
     );
     
     reg[`RegBus] logicout;

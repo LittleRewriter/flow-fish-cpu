@@ -73,7 +73,7 @@
 `define EXE_RES_SHIFT   3'b000
 `define EXE_RES_NOP     3'b000
 `define EXE_RES_ARITHMETIC 3'b100
-`define EXE_RES_MUL     3'b101
+`define EXE_RES_JUMP_BRANCH 3'b101
 
 // Storage related
 `define InstAddrBus     31:0
