@@ -29,6 +29,9 @@
 `define EXE_SLTI        6'b001010
 `define EXE_LW          6'b100011
 `define EXE_SW          6'b101011
+`define EXE_J           6'b000010
+`define EXE_JAL         6'b000011
+`define EXE_BEQ         6'b000100
 // function code, for inst_code is 6'b000000
 `define FUNC_AND        6'b100100
 `define FUNC_OR         6'b100101
@@ -54,6 +57,7 @@
 `define FUNC_SLT        6'b101010
 `define FUNC_SLTU       6'b101011
 `define FUNC_MUL        6'b000010
+`define FUNC_JR         6'b001000
 // Alu operators
 `define EXE_OR_OP       8'b00100101
 `define EXE_AND_OP      8'b00100100

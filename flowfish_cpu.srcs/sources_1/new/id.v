@@ -45,7 +45,8 @@ module id(
     output reg[`RegBus] reg1_o,
     output reg[`RegBus] reg2_o,
     output reg[`RegAddrBus] wd_o,
-    output reg wreg_o
+    output reg wreg_o,
+    output wire stallreq_from_id
     );
     
     wire[5:0] inst = inst_i[31:26];
@@ -279,21 +280,6 @@ module id(
                     reg1_read_o <= 1'b0;
                     reg2_read_o <= 1'b0;
                     instvalid <= `InstValid;
-                end
-                `EXE_SPECIAL2: begin
-                    case(func)
-                        `FUNC_MUL: begin
-                            wreg_o <= `WriteEnable;
-                            aluop_o <= {2'b00, func};
-                            alusel_o <= `EXE_RES_MUL;
-                            reg1_read_o <= `ReadEnable;
-                            reg2_read_o <= `ReadEnable;
-                            instvalid <= `InstValid;
-                        end
-                        default: begin
-                            
-                        end
-                    endcase
                 end
                 default: begin
 

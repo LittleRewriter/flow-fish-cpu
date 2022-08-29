@@ -27,17 +27,22 @@ module ex_mem(
     input wire[`RegAddrBus] ex_wd,
     input wire ex_wreg,
     input wire[`RegBus] ex_wdata,
+    input wire[5:0] stall_i,
     output reg[`RegAddrBus] mem_wd,
     output reg mem_wreg,
     output reg[`RegBus] mem_wdata
     );
-    
+
     always @(posedge clk) begin
         if(rst == `RstEnable) begin
             mem_wd <= `NOPRegAddr;
             mem_wreg <= `WriteDisable;
             mem_wdata <= `ZeroWord;
-        end else begin
+        end else if(stall_i[3] == 1'b1 && stall_i[4] == 1'b0)begin 
+            mem_wd <= `NOPRegAddr;
+            mem_wreg <= `WriteDisable;
+            mem_wdata <= `ZeroWord;
+        end else if(stall_i[3] == 1'b0) begin
             mem_wd <= ex_wd;
             mem_wreg <= ex_wreg;
             mem_wdata <= ex_wdata;

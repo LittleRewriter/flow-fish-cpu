@@ -68,6 +68,10 @@ module openmips(
     wire[`RegBus] reg2_data;
     wire[`RegAddrBus] reg1_addr;
     wire[`RegAddrBus] reg2_addr;
+
+    wire stallreq_from_ex;
+    wire stallreq_from_id;
+    wire[5:0] stall;
     
     pc_reg pc_reg0(
         .clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o)
@@ -76,7 +80,9 @@ module openmips(
     assign rom_addr_o = pc;
     
     if_id if_id0(
-        .clk(clk), .rst(rst), .if_pc(pc),
+        .clk(clk), .rst(rst),
+        .stall_i(stall),
+        .if_pc(pc),
         .if_inst(rom_data_i), .id_pc(id_pc_i),
         .id_inst(id_inst_i)
     );    
@@ -97,7 +103,8 @@ module openmips(
         .mem_wdata_i(mem_wdata_o),
         .aluop_o(id_aluop_o), .alusel_o(id_alusel_o),
         .reg1_o(id_reg1_o), .reg2_o(id_reg2_o),
-        .wd_o(id_wd_o), .wreg_o(id_wreg_o)
+        .wd_o(id_wd_o), .wreg_o(id_wreg_o),
+        .stallreq_from_id(stallreq_from_id)
     );
     
     regfile regfile1(
@@ -114,6 +121,7 @@ module openmips(
         .id_aluop(id_aluop_o), .id_alusel(id_alusel_o),
         .id_reg1(id_reg1_o), .id_reg2(id_reg2_o),
         .id_wd(id_wd_o), .id_wreg(id_wreg_o),
+        .stall_i(stall),
         .ex_aluop(ex_aluop_i), .ex_alusel(ex_alusel_i),
         .ex_reg1(ex_reg1_i), .ex_reg2(ex_reg2_i),
         .ex_wd(ex_wd_i), .ex_wreg(ex_wreg_i)
@@ -125,13 +133,15 @@ module openmips(
         .reg1_i(ex_reg1_i), .reg2_i(ex_reg2_i),
         .wd_i(ex_wd_i), .wreg_i(ex_wreg_i),
         .wd_o(ex_wd_o), .wreg_o(ex_wreg_o),
-        .wdata_o(ex_wdata_o)
+        .wdata_o(ex_wdata_o),
+        .stallreq_from_ex(.stallreq_from_ex)
     );
     
     ex_mem ex_mem0(
         .clk(clk), .rst(rst),
         .ex_wd(ex_wd_o), .ex_wreg(ex_wreg_o),
         .ex_wdata(ex_wdata_o),
+        .stall_i(stall),
         .mem_wd(mem_wd_i), .mem_wreg(mem_wreg_i),
         .mem_wdata(mem_wdata_i)
     );
@@ -139,6 +149,7 @@ module openmips(
     mem mem0(
         .rst(rst),
         .wd_i(mem_wd_i), .wreg_i(mem_wreg_i),
+        .stall_i(stall),
         .wdata_i(mem_wdata_i),
         .wd_o(mem_wd_o), .wreg_o(mem_wreg_o),
         .wdata_o(mem_wdata_o)
@@ -151,5 +162,13 @@ module openmips(
         .wb_wd(wb_wd_i), .wb_wreg(wb_wreg_i),
         .wb_wdata(wb_wdata_i)
     );
+
+    control control0(
+        .stallreq_from_ex(stallreq_from_ex),
+        .stallreq_from_id(stallreq_from_id),
+        .stall_o(stall)
+    )
+
+
     
 endmodule

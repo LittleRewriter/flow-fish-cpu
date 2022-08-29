@@ -29,6 +29,7 @@ module id_ex(
     input wire[`RegBus] id_reg2,
     input wire[`RegAddrBus] id_wd,
     input wire id_wreg,
+    input wire[5:0] stall_i,
     output reg[`AluSelBus] ex_alusel,
     output reg[`AluOpBus] ex_aluop,
     output reg[`RegBus] ex_reg1,
@@ -39,6 +40,13 @@ module id_ex(
     
     always @(posedge clk) begin
         if (rst == `RstEnable) begin
+            ex_aluop <= `EXE_NOP_OP;
+            ex_alusel <= `EXE_RES_NOP;
+            ex_reg1 <= `ZeroWord;
+            ex_reg2 <= `ZeroWord;
+            ex_wd <= `NOPRegAddr;
+            ex_wreg <= `WriteDisable;
+        end else if(stall_i[2] == 1'b1 && stall_i[3] == 1'b0) begin 
             ex_aluop <= `EXE_NOP_OP;
             ex_alusel <= `EXE_RES_NOP;
             ex_reg1 <= `ZeroWord;
