@@ -86,8 +86,7 @@ module id(
                 `EXE_SPECIAL: begin
                     case(op2)
                         5'b00000: begin
-                            
-                            case(func) begin
+                            case (func)
                                 `FUNC_MOVN: begin
                                     if(reg2_o == `ZeroWord) begin
                                         wreg_o <= `WriteEnable;
@@ -97,7 +96,7 @@ module id(
                                     wreg_o <= `WriteEnable;
                                     aluop_o <= {2'b00, func};
 
-                                    alusel_o <= `EXE_RES_MOVE;
+                                    alusel_o <= `EXE_RES_MOV;
                                     reg1_addr_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
@@ -110,7 +109,7 @@ module id(
                                     end
                                     aluop_o <= {2'b00, func};
 
-                                    alusel_o <= `EXE_RES_MOVE;
+                                    alusel_o <= `EXE_RES_MOV;
                                     reg1_addr_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
@@ -188,7 +187,7 @@ module id(
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
                                 end
-                            end
+                            endcase
                         end
                         default: begin
                             
@@ -282,11 +281,11 @@ module id(
                     instvalid <= `InstValid;
                 end
                 `EXE_SPECIAL2: begin
-                    case(func): begin
+                    case(func)
                         `FUNC_MUL: begin
                             wreg_o <= `WriteEnable;
                             aluop_o <= {2'b00, func};
-                            alusel_o <= EXE_RES_MUL;
+                            alusel_o <= `EXE_RES_MUL;
                             reg1_read_o <= `ReadEnable;
                             reg2_read_o <= `ReadEnable;
                             instvalid <= `InstValid;
@@ -294,7 +293,7 @@ module id(
                         default: begin
                             
                         end
-                    end
+                    endcase
                 end
                 default: begin
 

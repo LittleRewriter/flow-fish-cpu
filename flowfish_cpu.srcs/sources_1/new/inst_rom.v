@@ -35,7 +35,7 @@ module inst_rom (
             inst <= `ZeroWord;
         end else begin
             // equals to shift left to div 4(from word to byte)
-            inst <= inst_mem[addr[`InstMemNumLog2+1:2]]
+            inst <= inst_mem[addr[`InstMemNumLog2+1:2]];
         end
     end
     

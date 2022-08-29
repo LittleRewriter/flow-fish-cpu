@@ -27,6 +27,8 @@
 `define EXE_ADDI        6'b001000
 `define EXE_ADDIU       6'b001001
 `define EXE_SLTI        6'b001010
+`define EXE_LW          6'b100011
+`define EXE_SW          6'b101011
 // function code, for inst_code is 6'b000000
 `define FUNC_AND        6'b100100
 `define FUNC_OR         6'b100101
