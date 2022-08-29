@@ -30,6 +30,7 @@ module mem(
     input wire[`DataAddrBus] mem_addr_i,
     input wire[`RegBus] reg2_i,
     input wire[`DataBus] mem_data_i,
+    input wire[5:0] stall_i,
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
     output reg[`RegBus] wdata_o,
@@ -51,7 +52,15 @@ module mem(
             mem_we <= `WriteDisable;
             mem_data_o <= `ZeroWord;
             mem_ce_o <= `ChipDisable;
-        end else begin
+        end else if(stall_i[4] == 1'b1 && stall_i[5] == 1'b0) begin 
+            wd_o <= `NOPRegAddr;
+            wreg_o <= `WriteDisable;
+            wdata_o <= `ZeroWord;
+            mem_addr_o <= `ZeroWord;
+            mem_we <= `WriteDisable;
+            mem_data_o <= `ZeroWord;
+            mem_ce_o <= `ChipDisable;
+        end else if(stall_i[4] == 1'b0) begin
             wd_o <= wd_i;
             wreg_o <= wreg_i;
             wdata_o <= wdata_i;

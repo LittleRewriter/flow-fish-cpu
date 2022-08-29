@@ -37,7 +37,8 @@ module ex(
     output reg[`RegBus] wdata_o,
     output wire[`AluOpBus] aluop_o,
     output wire[`RegBus] mem_addr_o,
-    output wire[`RegBus] reg2_o
+    output wire[`RegBus] reg2_o,
+    output reg stallreq_from_ex
     );
     
     reg[`RegBus] logicout;
@@ -51,10 +52,6 @@ module ex(
     wire[`RegBus] reg2_i_mux;
     wire[`RegBus] reg1_i_not;
     wire[`RegBus] result_sum;
-    wire[`RegBus] opdata1_mult;
-    wire[`RegBus] opdata2_mult;
-    wire[`DoubleRegBus] hilo_temp;
-    reg[`DoubleRegBus] mulres;
 
     assign aluop_o = aluop_i;
     assign mem_addr_o = reg1_i + {{16{inst_i[15]}}, inst_i[15:0]};
@@ -94,26 +91,6 @@ module ex(
                     
                 end
             endcase
-        end
-    end
-
-    assign opdata1_mult = ((aluop_i == {2'b00, `FUNC_MUL}) && reg1_i[31] == 1'b1)?
-                            (~reg1_i +1) : reg1_i;
-    assign opdata2_mult = ((aluop_i == {2'b00, `FUNC_MUL}) && reg2_i[31] == 1'b1)?
-                            (~reg2_i + 1) : reg1_i;
-    assign hilo_temp = opdata1_mult * opdata2_mult;
-    
-    always @(*) begin
-        if(rst == `RstEnable) begin
-            mulres <= {`ZeroWord, `ZeroWord};
-        end else if (aluop_i == {2'b00, `FUNC_MUL}) begin
-            if(reg1_i[31] ^ reg2_i[31] == 1'b1) begin
-                mulres <= ~hilo_temp + 1;
-            end else begin
-                mulres <= hilo_temp;
-            end
-        end else begin
-            mulres <= hilo_temp;
         end
     end
 
@@ -201,9 +178,6 @@ module ex(
             end
             `EXE_RES_ARITHMETIC: begin
                 wdata_o <= arithmeticres;
-            end
-            `EXE_RES_MUL: begin
-                wdata_o <= mulres[31:0];
             end
             default: begin
                 wdata_o <= `ZeroWord;
