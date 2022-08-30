@@ -56,7 +56,8 @@ module id(
     output reg[`RegBus] branch_target_address_o,
     output reg[`RegBus] link_addr_o, // ret addr of branch inst(save current pc addr?)
     output reg is_in_delayslot_o,
-    output wire stallreq
+    output wire stallreq,
+    output reg drop_control
     );
     
     wire[5:0] inst = inst_i[31:26];
@@ -99,6 +100,7 @@ module id(
             branch_target_address_o <= `ZeroWord;
             branch_flag_o <=1'b0;
             next_inst_in_delayslot_o <= 1'b0;
+            drop_control <= `DropDisable;
         end else begin
             aluop_o <= `EXE_NOP_OP;
             alusel_o <= `EXE_RES_NOP;
@@ -116,6 +118,7 @@ module id(
             branch_target_address_o <= `ZeroWord;
             branch_flag_o <= 1'b0;
             next_inst_in_delayslot_o <= 1'b0;
+            drop_control <= `DropDisable;
             case (inst)
                 `EXE_SPECIAL: begin
                     case(op2)
@@ -326,6 +329,7 @@ module id(
                     instvalid <= `InstValid;
                     branch_target_address_o <=
                     {pc_plus_4[31:28], inst_i[25:0], 2'b00};
+                    drop_control <= `DropEnable;
                 end
                 `EXE_BEQ: begin
                     wreg_o <= `WriteDisable;
@@ -338,6 +342,7 @@ module id(
                         branch_target_address_o <= pc_plus_4 + imm_sll2_signedext;
                         branch_flag_o <= 1'b1;
                         next_inst_in_delayslot_o <= 1'b1;
+                        drop_control <= `DropEnable;
                     end
                 
                 end

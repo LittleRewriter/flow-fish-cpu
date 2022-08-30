@@ -27,6 +27,7 @@ module if_id(
     input wire[`InstAddrBus] if_pc,
     input wire[`InstBus] if_inst,
     input wire[5:0] stall_i,
+    input wire drop_i,
     output reg[`InstAddrBus] id_pc,
     output reg[`InstBus] id_inst
     );
@@ -37,6 +38,9 @@ module if_id(
             id_inst <= `ZeroWord;
         end else if(stall_i[1] == 1'b1 && stall_i[2] == 1'b0) begin 
             id_pc <= `ZeroWord;
+            id_inst <= `ZeroWord;
+        end else if(drop_i == `DropEnable) begin
+            id_pc <= if_pc;
             id_inst <= `ZeroWord;
         end else if (stall_i[1] == 1'b0) begin
             id_pc <= if_pc;
