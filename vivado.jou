@@ -77,3 +77,79 @@ source openmips_min_spoc_tb.tcl
 update_compile_order -fileset sources_1
 update_compile_order -fileset sources_1
 update_compile_order -fileset sources_1
+close_sim
+launch_simulation
+launch_simulation
+launch_simulation
+launch_simulation
+add_files -norecurse D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/control.v
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+update_compile_order -fileset sources_1
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl

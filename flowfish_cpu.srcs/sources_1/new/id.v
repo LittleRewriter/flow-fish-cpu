@@ -37,6 +37,8 @@ module id(
     input wire[`RegBus] mem_wdata_i,
     input wire is_in_delayslot_i, // whether curr inst ad id-period is in delay_slot
 
+    input wire[`AluOpBus] ex_aluop_i, // the instruction emit in ex-period
+
     output reg reg1_read_o,
     output reg reg2_read_o,
     output reg[`RegAddrBus] reg1_addr_o,
@@ -48,13 +50,13 @@ module id(
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
     output wire[`InstBus] inst_id_o,
-    output reg stallreq_from_id,
 
     output reg next_inst_in_delayslot_o, 
     output reg branch_flag_o, // whether branch happen
     output reg[`RegBus] branch_target_address_o,
     output reg[`RegBus] link_addr_o, // ret addr of branch inst(save current pc addr?)
-    output reg is_in_delayslot_o
+    output reg is_in_delayslot_o,
+    output wire stallreq
     );
     
     wire[5:0] inst = inst_i[31:26];
@@ -74,6 +76,12 @@ module id(
     assign pc_plus_8 = pc_i + 32'h00000008;
     assign pc_plus_4 = pc_i + 32'h00000004;
     assign imm_sll2_signedext = {{14{inst_i[15]}}, inst_i[15:0], 2'b00};
+
+    reg stallreq_for_reg1_loadrelate; // reg1 has load havard
+    reg stallreq_for_reg2_loadrelate; // reg2 has load havard
+    wire pre_inst_is_load;  // whether pre is load
+
+    assign pre_inst_is_load = ((ex_aluop_i == `EXE_LW) || (ex_aluop_i == `EXE_SW)) ? 1'b1 : 1'b0;
     
     always @(*) begin
         if (rst == `RstEnable) begin
@@ -382,8 +390,11 @@ module id(
     end
     
     always @(*) begin
+        stallreq_for_reg1_loadrelate <= 1'b0;
         if (rst == `RstEnable) begin
             reg1_o <= `ZeroWord;
+        end else if (pre_inst_is_load == 1'b1 && ex_wd_i == reg1_addr_o && reg1_read_o == 1'b1) begin
+            stallreq_for_reg1_loadrelate <= 1'b1;
         end else if ((reg1_read_o == 1'b1) && (ex_wreg_i == 1'b1) && (ex_wd_i == reg1_addr_o)) begin
             reg1_o <= ex_wdata_i;
         end else if ((reg1_read_o == 1'b1) && (mem_wreg_i == 1'b1) && (mem_wd_i == reg1_addr_o)) begin
@@ -398,8 +409,11 @@ module id(
     end
     
     always @(*) begin
+        stallreq_for_reg2_loadrelate <= 1'b0;
         if (rst == `RstEnable) begin
             reg2_o <= `ZeroWord;
+        end else if (pre_inst_is_load == 1'b1 && ex_wd_i == reg2_addr_o && reg2_read_o == 1'b1) begin
+            stallreq_for_reg2_loadrelate <= 1'b1;
         end else if ((reg2_read_o == 1'b1) && (ex_wreg_i == 1'b1) && (ex_wd_i == reg2_addr_o)) begin
             reg2_o <= ex_wdata_i;
         end else if ((reg2_read_o == 1'b1) && (mem_wreg_i == 1'b1) && (mem_wd_i == reg2_addr_o)) begin
@@ -420,5 +434,7 @@ module id(
             is_in_delayslot_o <= is_in_delayslot_i;
         end
     end
+
+    assign stallreq = stallreq_for_reg1_loadrelate | stallreq_for_reg2_loadrelate;
     
 endmodule

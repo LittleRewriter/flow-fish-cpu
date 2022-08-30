@@ -35,7 +35,7 @@ module inst_rom(
         if (ce == `ChipDisable) begin
             inst <= `ZeroWord;
         end else begin
-            // 字节对齐，需要除以4，所以取初后2位之外的部分
+            // get the high log n - 2 bits
             inst <= inst_mem[addr[`InstMemNumLog2+1:2]];
         end
     end

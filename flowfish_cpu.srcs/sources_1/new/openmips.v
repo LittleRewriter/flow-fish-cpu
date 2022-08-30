@@ -118,33 +118,37 @@ module openmips(
         .id_inst(id_inst_i)
     );    
 
-
-    
     id id0(
-        .rst(rst), .pc_i(id_pc_i), .inst_i(id_inst_i),
-        .reg1_data_i(reg1_data),
-        .reg2_data_i(reg2_data),
-        .reg1_read_o(reg1_read),
-        .reg2_read_o(reg2_read),
-        .reg1_addr_o(reg1_addr),
-        .reg2_addr_o(reg2_addr),
-        .ex_wreg_i(ex_wreg_o),
-        .ex_wd_i(ex_wd_o),
-        .ex_wdata_i(ex_wdata_o),
-        .mem_wreg_i(mem_wreg_o),
-        .mem_wd_i(mem_wd_o),
-        .mem_wdata_i(mem_wdata_o),
-        .is_in_delayslot_i(is_in_delayslot_back),
-        .aluop_o(id_aluop_o), .alusel_o(id_alusel_o),
-        .reg1_o(id_reg1_o), .reg2_o(id_reg2_o),
-        .wd_o(id_wd_o), .wreg_o(id_wreg_o),
-        .inst_id_o(id_inst_o),
-        .stallreq_from_id(stallreq_from_id),
-        .branch_flag_o(branch_flag),
-        .branch_target_address_o(branch_target_address),
-        .is_in_delayslot_o(is_in_delayslot_id),
-        .link_addr_o(link_addr_id),
-        .next_inst_in_delayslot_o(next_inst_in_delayslot)
+    	.rst                      (rst                      ),
+        .pc_i                     (id_pc_i                  ),
+        .inst_i                   (id_inst_i                ),
+        .reg1_data_i              (reg1_data                ),
+        .reg2_data_i              (reg2_data                ),
+        .ex_wreg_i                (ex_wreg_o                ),
+        .ex_wd_i                  (ex_wd_o                  ),
+        .ex_wdata_i               (ex_wdata_o               ),
+        .mem_wreg_i               (mem_wreg_o               ),
+        .mem_wd_i                 (mem_wd_o                 ),
+        .mem_wdata_i              (mem_wdata_o              ),
+        .is_in_delayslot_i        (is_in_delayslot_i        ),
+        .ex_aluop_i               (ex_aluop_o               ),
+        .reg1_read_o              (reg1_read                ),
+        .reg2_read_o              (reg2_read                ),
+        .reg1_addr_o              (reg1_addr                ),
+        .reg2_addr_o              (reg2_addr                ),
+        .aluop_o                  (id_aluop_o               ),
+        .alusel_o                 (id_alusel_o              ),
+        .reg1_o                   (id_reg1_o                ),
+        .reg2_o                   (id_reg2_o                ),
+        .wd_o                     (id_wd_o                  ),
+        .wreg_o                   (id_wreg_o                ),
+        .inst_id_o                (id_inst_o                ),
+        .next_inst_in_delayslot_o (next_inst_in_delayslot   ),
+        .branch_flag_o            (branch_flag              ),
+        .branch_target_address_o  (branch_target_address    ),
+        .link_addr_o              (link_addr_id             ),
+        .is_in_delayslot_o        (is_in_delayslot_id       ),
+        .stallreq                 (stallreq_from_id         )
     );
     
     regfile regfile1(
