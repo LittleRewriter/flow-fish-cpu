@@ -1027,3 +1027,472 @@ source openmips_min_spoc_tb.tcl
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'openmips_min_spoc_tb_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
 launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1254.922 ; gain = 0.000
+update_compile_order -fileset sources_1
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 1254.922 ; gain = 0.000
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'openmips_min_spoc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj openmips_min_spoc_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/defines.vh" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+ERROR: [VRFC 10-3805] use of undefined macro 'b00' [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:56]
+ERROR: [VRFC 10-3805] use of undefined macro 'EXE_MOVZ_OP' [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:126]
+ERROR: [VRFC 10-4982] syntax error near ':' [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:126]
+ERROR: [VRFC 10-3805] use of undefined macro 'EXE_MOVN_OP' [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:129]
+ERROR: [VRFC 10-4982] syntax error near 'begin' [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:129]
+ERROR: [VRFC 10-2790] Verilog 2000 keyword begin used in incorrect context [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:129]
+ERROR: [VRFC 10-2445] single value range is not allowed in packed dimension [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:53]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:56]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:57]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:58]
+ERROR: [VRFC 10-2989] 'FUNC_SLT' is not declared [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:66]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:66]
+ERROR: [VRFC 10-2989] 'aluop' is not declared [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:125]
+ERROR: [VRFC 10-554] default case should appear only once [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:129]
+ERROR: [VRFC 10-2865] module 'ex' ignored due to previous errors [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:24]
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xvlog.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xvlog.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'openmips_min_spoc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj openmips_min_spoc_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/defines.vh" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+ERROR: [VRFC 10-3805] use of undefined macro 'b00' [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:66]
+ERROR: [VRFC 10-2445] single value range is not allowed in packed dimension [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:53]
+WARNING: [VRFC 10-526] concatenation with unsized literal; will interpret as 32 bits [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:66]
+ERROR: [VRFC 10-2989] 'FUNC_MOVZ' is not declared [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:126]
+ERROR: [VRFC 10-2989] 'FUNC_MOVN' is not declared [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:129]
+ERROR: [VRFC 10-2865] module 'ex' ignored due to previous errors [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:24]
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xvlog.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xvlog.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'openmips_min_spoc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj openmips_min_spoc_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/defines.vh" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+ERROR: [VRFC 10-2445] single value range is not allowed in packed dimension [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:53]
+ERROR: [VRFC 10-2865] module 'ex' ignored due to previous errors [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v:24]
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-99] Step results log file:'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xvlog.log'
+ERROR: [USF-XSim-62] 'compile' step failed with error(s). Please check the Tcl console output or 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xvlog.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'openmips_min_spoc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj openmips_min_spoc_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/defines.vh" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/id_ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id_ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/if_id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module if_id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/inst_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/mem_wb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_wb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/openmips.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/openmips_min_sopc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_sopc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/pc_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pc_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/openmips_min_spoc_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_spoc_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xelab -wto 9d1fc59a27024c2a8a6c386b10da21d5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_spoc_tb_behav xil_defaultlib.openmips_min_spoc_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 9d1fc59a27024c2a8a6c386b10da21d5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_spoc_tb_behav xil_defaultlib.openmips_min_spoc_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'cnt_i' is not connected on this instance [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/openmips.v:122]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.if_id
+Compiling module xil_defaultlib.id
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.id_ex
+Compiling module xil_defaultlib.ex
+Compiling module xil_defaultlib.ex_mem
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.mem_wb
+Compiling module xil_defaultlib.openmips
+Compiling module xil_defaultlib.inst_rom
+Compiling module xil_defaultlib.openmips_min_sopc
+Compiling module xil_defaultlib.openmips_min_spoc_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot openmips_min_spoc_tb_behav
+
+****** Webtalk v2019.2 (64-bit)
+  **** SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+  **** IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+    ** Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+
+source D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-186] 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/usage_statistics_ext_xsim.xml' has been successfully sent to Xilinx on Sun Aug 28 22:33:04 2022. For additional details about this file, please refer to the WebTalk help file at D:/Xilinx/Vivado/2019.2/doc/webtalk_introduction.html.
+INFO: [Common 17-206] Exiting Webtalk at Sun Aug 28 22:33:04 2022...
+run_program: Time (s): cpu = 00:00:00 ; elapsed = 00:00:10 . Memory (MB): peak = 1254.922 ; gain = 0.000
+INFO: [USF-XSim-69] 'elaborate' step finished in '10' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "openmips_min_spoc_tb_behav -key {Behavioral:sim_1:Functional:openmips_min_spoc_tb} -tclbatch {openmips_min_spoc_tb.tcl} -view {D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'openmips_min_spoc_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:15 . Memory (MB): peak = 1254.922 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'openmips_min_spoc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj openmips_min_spoc_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/defines.vh" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/id_ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id_ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/if_id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module if_id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/inst_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/mem_wb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_wb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/openmips.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/openmips_min_sopc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_sopc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/pc_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pc_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/openmips_min_spoc_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_spoc_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xelab -wto 9d1fc59a27024c2a8a6c386b10da21d5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_spoc_tb_behav xil_defaultlib.openmips_min_spoc_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 9d1fc59a27024c2a8a6c386b10da21d5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_spoc_tb_behav xil_defaultlib.openmips_min_spoc_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'cnt_i' is not connected on this instance [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/openmips.v:122]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.if_id
+Compiling module xil_defaultlib.id
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.id_ex
+Compiling module xil_defaultlib.ex
+Compiling module xil_defaultlib.ex_mem
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.mem_wb
+Compiling module xil_defaultlib.openmips
+Compiling module xil_defaultlib.inst_rom
+Compiling module xil_defaultlib.openmips_min_sopc
+Compiling module xil_defaultlib.openmips_min_spoc_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot openmips_min_spoc_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "openmips_min_spoc_tb_behav -key {Behavioral:sim_1:Functional:openmips_min_spoc_tb} -tclbatch {openmips_min_spoc_tb.tcl} -view {D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'openmips_min_spoc_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 1254.922 ; gain = 0.000
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'openmips_min_spoc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj openmips_min_spoc_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/defines.vh" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/id_ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id_ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/if_id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module if_id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/inst_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/mem_wb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_wb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/openmips.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/openmips_min_sopc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_sopc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/pc_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pc_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/openmips_min_spoc_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_spoc_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xelab -wto 9d1fc59a27024c2a8a6c386b10da21d5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_spoc_tb_behav xil_defaultlib.openmips_min_spoc_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 9d1fc59a27024c2a8a6c386b10da21d5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_spoc_tb_behav xil_defaultlib.openmips_min_spoc_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'cnt_i' is not connected on this instance [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/openmips.v:122]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.if_id
+Compiling module xil_defaultlib.id
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.id_ex
+Compiling module xil_defaultlib.ex
+Compiling module xil_defaultlib.ex_mem
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.mem_wb
+Compiling module xil_defaultlib.openmips
+Compiling module xil_defaultlib.inst_rom
+Compiling module xil_defaultlib.openmips_min_sopc
+Compiling module xil_defaultlib.openmips_min_spoc_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot openmips_min_spoc_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "openmips_min_spoc_tb_behav -key {Behavioral:sim_1:Functional:openmips_min_spoc_tb} -tclbatch {openmips_min_spoc_tb.tcl} -view {D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'openmips_min_spoc_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1254.922 ; gain = 0.000
+update_compile_order -fileset sources_1
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-5682] Launching behavioral simulation in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'openmips_min_spoc_tb' in fileset 'sim_1'...
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [SIM-utils-43] Exported 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/inst_rom.data'
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xvlog --incr --relax -prj openmips_min_spoc_tb_vlog.prj"
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/defines.vh" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/ex_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/id_ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id_ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/if_id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module if_id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/inst_rom.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module inst_rom
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/mem_wb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_wb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/openmips.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/openmips_min_sopc.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_sopc
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/pc_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pc_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/openmips_min_spoc_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips_min_spoc_tb
+INFO: [USF-XSim-69] 'compile' step finished in '2' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+"xelab -wto 9d1fc59a27024c2a8a6c386b10da21d5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_spoc_tb_behav xil_defaultlib.openmips_min_spoc_tb xil_defaultlib.glbl -log elaborate.log"
+Vivado Simulator 2019.2
+Copyright 1986-1999, 2001-2019 Xilinx, Inc. All Rights Reserved.
+Running: D:/Xilinx/Vivado/2019.2/bin/unwrapped/win64.o/xelab.exe -wto 9d1fc59a27024c2a8a6c386b10da21d5 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot openmips_min_spoc_tb_behav xil_defaultlib.openmips_min_spoc_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'cnt_i' is not connected on this instance [D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/openmips.v:122]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.pc_reg
+Compiling module xil_defaultlib.if_id
+Compiling module xil_defaultlib.id
+Compiling module xil_defaultlib.regfile
+Compiling module xil_defaultlib.id_ex
+Compiling module xil_defaultlib.ex
+Compiling module xil_defaultlib.ex_mem
+Compiling module xil_defaultlib.mem
+Compiling module xil_defaultlib.mem_wb
+Compiling module xil_defaultlib.openmips
+Compiling module xil_defaultlib.inst_rom
+Compiling module xil_defaultlib.openmips_min_sopc
+Compiling module xil_defaultlib.openmips_min_spoc_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot openmips_min_spoc_tb_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '3' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in 'D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "openmips_min_spoc_tb_behav -key {Behavioral:sim_1:Functional:openmips_min_spoc_tb} -tclbatch {openmips_min_spoc_tb.tcl} -view {D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2019.2
+Time resolution is 1 ps
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'openmips_min_spoc_tb_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:02 ; elapsed = 00:00:07 . Memory (MB): peak = 1254.922 ; gain = 0.000
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1

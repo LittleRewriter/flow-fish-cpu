@@ -31,6 +31,8 @@ module ex(
     input wire wreg_i,
     input wire[1:0] cnt_i, // at which period
     input wire[`InstBus] inst_i, 
+    input wire[`RegBus] link_addr_i,
+    input wire is_in_delayslot_i,
     output wire[1:0] cnt_o, // next period
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
@@ -178,6 +180,9 @@ module ex(
             end
             `EXE_RES_ARITHMETIC: begin
                 wdata_o <= arithmeticres;
+            end
+            `EXE_RES_JUMP_BRANCH: begin
+                wdata_o <= link_addr_i;
             end
             default: begin
                 wdata_o <= `ZeroWord;

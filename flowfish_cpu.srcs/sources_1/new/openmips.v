@@ -31,7 +31,9 @@ module openmips(
     output wire[`DataAddrBus] ram_addr_o,
     output wire[`DataBus] ram_data_o,
     output wire ram_we_o,
-    output wire ram_ce_o
+    output wire ram_ce_o,
+    // the following is debug output
+    output wire[5:0] debug_stall
     );
     
     wire[`InstAddrBus] pc;
@@ -86,9 +88,24 @@ module openmips(
     wire stallreq_from_ex;
     wire stallreq_from_id;
     wire[5:0] stall;
+
+    wire branch_flag;
+    wire[`InstAddrBus] branch_target_address;
+    wire next_inst_in_delayslot;
+    wire[`RegBus] link_addr_id;
+    wire[`RegBus] link_addr_ex;
+    wire is_in_delayslot_id;
+    wire is_in_delayslot_back;
+    wire is_in_delayslot_ex;
+
+    // the following is debug output assign
+    assign debug_stall = stall;
+    // kokomade
     
     pc_reg pc_reg0(
-        .clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o)
+        .clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o),
+        .branch_flag_i(branch_flag), 
+        .branch_target_address_i(branch_target_address)
     );
     
     assign rom_addr_o = pc;
@@ -117,11 +134,17 @@ module openmips(
         .mem_wreg_i(mem_wreg_o),
         .mem_wd_i(mem_wd_o),
         .mem_wdata_i(mem_wdata_o),
+        .is_in_delayslot_i(is_in_delayslot_back),
         .aluop_o(id_aluop_o), .alusel_o(id_alusel_o),
         .reg1_o(id_reg1_o), .reg2_o(id_reg2_o),
         .wd_o(id_wd_o), .wreg_o(id_wreg_o),
         .inst_id_o(id_inst_o),
-        .stallreq_from_id(stallreq_from_id)
+        .stallreq_from_id(stallreq_from_id),
+        .branch_flag_o(branch_flag),
+        .branch_target_address_o(branch_target_address),
+        .is_in_delayslot_o(is_in_delayslot_id),
+        .link_addr_o(link_addr_id),
+        .next_inst_in_delayslot_o(next_inst_in_delayslot)
     );
     
     regfile regfile1(
@@ -144,6 +167,9 @@ module openmips(
         .id_wd     (id_wd_o     ),
         .id_wreg   (id_wreg_o   ),
         .id_inst   (id_inst_o   ),
+        .id_is_in_delayslot(is_in_delayslot_id),
+        .id_link_address(link_addr_id),
+        .next_inst_in_delayslot_i(next_inst_in_delayslot),
         .stall_i   (stall       ),
         .ex_alusel (ex_alusel_i ),
         .ex_aluop  (ex_aluop_i  ),
@@ -151,7 +177,10 @@ module openmips(
         .ex_reg2   (ex_reg2_i   ),
         .ex_wd     (ex_wd_i     ),
         .ex_wreg   (ex_wreg_i   ),
-        .ex_inst   (ex_inst_i   )
+        .ex_inst   (ex_inst_i   ),
+        .ex_is_in_delayslot(is_in_delayslot_ex),
+        .ex_link_address(link_addr_ex),
+        .is_in_delayslot_o(is_in_delayslot_back)
     );
 
     ex ex0(
@@ -164,6 +193,8 @@ module openmips(
         .wreg_i     (ex_wreg_i  ),
         .cnt_i      (ex_cnt_i   ),
         .inst_i     (ex_inst_i  ),
+        .is_in_delayslot_i(is_in_delayslot_back),
+        .link_addr_i(link_addr_ex),
         .cnt_o      (ex_cnt_o   ),
         .wd_o       (ex_wd_o    ),
         .wreg_o     (ex_wreg_o  ),

@@ -28,12 +28,14 @@ module openmips_min_sopc(
     
     wire[`InstAddrBus] inst_addr;
     wire[`InstBus] inst;
+    wire[5:0] debug_stall;
     wire rom_ce;
     
     openmips openmips_0(
         .clk(clk), .rst(rst),
         .rom_addr_o(inst_addr), .rom_data_i(inst),
-        .rom_ce_o(rom_ce)
+        .rom_ce_o(rom_ce),
+        .debug_stall(debug_stall)
     );
     
     inst_rom inst_rom_0(
