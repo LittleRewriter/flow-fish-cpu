@@ -25,7 +25,7 @@ module regfile(
     input wire rst,
     input wire clk,
     input wire[`RegAddrBus] waddr,
-    input wire[`RegBus]wdata,
+    input wire[`RegBus] wdata,
     input wire we,
     input wire[`RegAddrBus]raddr1,
     input wire re1,

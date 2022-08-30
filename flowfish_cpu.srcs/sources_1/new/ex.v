@@ -162,8 +162,8 @@ module ex(
 
     always @(*) begin
         wd_o <= wd_i;
-        if((aluop_i == {2'b00, `FUNC_ADD})||(aluop_i == {2'b00, `FUNC_SUB})||
-        (aluop_i == {2'b00, `EXE_ADDI})) begin
+        if(((aluop_i == {2'b00, `FUNC_ADD})||(aluop_i == {2'b00, `FUNC_SUB})||
+        (aluop_i == {2'b00, `EXE_ADDI})) && ov_sum == 1'b1) begin
             wreg_o <= `WriteDisable;
         end else begin
             wreg_o <= wreg_i;
