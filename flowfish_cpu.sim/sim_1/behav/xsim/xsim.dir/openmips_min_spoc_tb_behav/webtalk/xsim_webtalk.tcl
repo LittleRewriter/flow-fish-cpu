@@ -1,6 +1,10 @@
-webtalk_init -webtalk_dir D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/
+webtalk_init -webtalk_dir D:/LR/FPGA/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/
 webtalk_register_client -client project
+<<<<<<< HEAD
 webtalk_add_data -client project -key date_generated -value "Tue Aug 30 20:33:24 2022" -context "software_version_and_target_device"
+=======
+webtalk_add_data -client project -key date_generated -value "Tue Aug 30 20:35:11 2022" -context "software_version_and_target_device"
+>>>>>>> 291d69893d9381f227c60606a4cccb60712baff4
 webtalk_add_data -client project -key product_version -value "XSIM v2019.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "2708876" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -12,16 +16,21 @@ webtalk_add_data -client project -key target_family -value "not_applicable" -con
 webtalk_add_data -client project -key target_device -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key target_package -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
-webtalk_add_data -client project -key random_id -value "6e24c5ad-a1d6-45c6-9e03-406dd9ededf9" -context "software_version_and_target_device"
+webtalk_add_data -client project -key random_id -value "e6395845-8a68-4815-86d7-a8de576ec845" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "9d1fc59a27024c2a8a6c386b10da21d5" -context "software_version_and_target_device"
+<<<<<<< HEAD
 webtalk_add_data -client project -key project_iteration -value "112" -context "software_version_and_target_device"
+=======
+webtalk_add_data -client project -key project_iteration -value "104" -context "software_version_and_target_device"
+>>>>>>> 291d69893d9381f227c60606a4cccb60712baff4
 webtalk_add_data -client project -key os_name -value "Windows Server 2016 or Windows 10" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
-webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz" -context "user_environment"
-webtalk_add_data -client project -key cpu_speed -value "2400 MHz" -context "user_environment"
+webtalk_add_data -client project -key cpu_name -value "AMD Ryzen 7 4800H with Radeon Graphics         " -context "user_environment"
+webtalk_add_data -client project -key cpu_speed -value "2895 MHz" -context "user_environment"
 webtalk_add_data -client project -key total_processors -value "1" -context "user_environment"
-webtalk_add_data -client project -key system_ram -value "12.000 GB" -context "user_environment"
+webtalk_add_data -client project -key system_ram -value "16.000 GB" -context "user_environment"
 webtalk_register_client -client xsim
+<<<<<<< HEAD
 webtalk_add_data -client xsim -key Command -value "xsim" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key trace_waveform -value "true" -context "xsim\\usage"
 webtalk_add_data -client xsim -key runtime -value "1 us" -context "xsim\\usage"
@@ -29,4 +38,23 @@ webtalk_add_data -client xsim -key iteration -value "1" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Simulation_Time -value "0.05_sec" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Simulation_Memory -value "15132_KB" -context "xsim\\usage"
 webtalk_transmit -clientid 2835162315 -regid "" -xml D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+=======
+webtalk_add_data -client xsim -key File_Counter -value "16" -context "xsim\\command_line_options"
+webtalk_add_data -client xsim -key Command -value "xelab" -context "xsim\\command_line_options"
+webtalk_add_data -client xsim -key Vhdl2008 -value "false" -context "xsim\\command_line_options"
+webtalk_add_data -client xsim -key GenDLL -value "false" -context "xsim\\command_line_options"
+webtalk_add_data -client xsim -key SDFModeling -value "false" -context "xsim\\command_line_options"
+webtalk_add_data -client xsim -key HWCosim -value "false" -context "xsim\\command_line_options"
+webtalk_add_data -client xsim -key DPI_Used -value "false" -context "xsim\\command_line_options"
+webtalk_add_data -client xsim -key Debug -value "typical" -context "xsim\\command_line_options"
+webtalk_add_data -client xsim -key Simulation_Image_Code -value "162 KB" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Image_Data -value "50 KB" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Total_Processes -value "119" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Total_Instances -value "16" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip unimacro_ver unisims_ver " -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Time -value "1.00_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Memory -value "76944_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 359610385 -regid "" -xml D:/LR/FPGA/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/usage_statistics_ext_xsim.xml -html D:/LR/FPGA/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/usage_statistics_ext_xsim.html -wdm D:/LR/FPGA/flow-fish-cpu/flowfish_cpu.sim/sim_1/behav/xsim/xsim.dir/openmips_min_spoc_tb_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+>>>>>>> 291d69893d9381f227c60606a4cccb60712baff4
 webtalk_terminate

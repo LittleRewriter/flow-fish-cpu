@@ -13,6 +13,8 @@
 `define False_v         1'b0
 `define ChipEnable      1'b1
 `define ChipDisable     1'b0
+`define DropEnable      1'b1
+`define DropDisable     1'b0
 
 // instruction code
 `define EXE_ORI         6'b001101

@@ -39,7 +39,7 @@ module openmips(
     wire[`InstAddrBus] pc;
     wire[`InstAddrBus] id_pc_i;
     wire[`InstBus] id_inst_i;
-    
+    wire drop_next_inst;
     wire[`AluOpBus] id_aluop_o;
     wire[`AluSelBus] id_alusel_o;
     wire[`RegBus] id_reg1_o;
@@ -115,7 +115,9 @@ module openmips(
         .clk(clk), .rst(rst),
         .stall_i(stall),
         .if_pc(pc),
-        .if_inst(rom_data_i), .id_pc(id_pc_i),
+        .if_inst(rom_data_i),
+        .drop_i(drop_next_inst),
+        .id_pc(id_pc_i),
         .id_inst(id_inst_i)
     );    
 
@@ -131,7 +133,7 @@ module openmips(
         .mem_wreg_i               (mem_wreg_o               ),
         .mem_wd_i                 (mem_wd_o                 ),
         .mem_wdata_i              (mem_wdata_o              ),
-        .is_in_delayslot_i        (is_in_delayslot_i        ),
+        .is_in_delayslot_i        (is_in_delayslot_back     ),
         .ex_aluop_i               (ex_aluop_o               ),
         .reg1_read_o              (reg1_read                ),
         .reg2_read_o              (reg2_read                ),
@@ -149,7 +151,8 @@ module openmips(
         .branch_target_address_o  (branch_target_address    ),
         .link_addr_o              (link_addr_id             ),
         .is_in_delayslot_o        (is_in_delayslot_id       ),
-        .stallreq                 (stallreq_from_id         )
+        .stallreq                 (stallreq_from_id         ),
+        .drop_control             (drop_next_inst           )
     );
     
     regfile regfile1(
@@ -198,7 +201,7 @@ module openmips(
         .wreg_i     (ex_wreg_i  ),
         .cnt_i      (ex_cnt_i   ),
         .inst_i     (ex_inst_i  ),
-        .is_in_delayslot_i(is_in_delayslot_back),
+        .is_in_delayslot_i(is_in_delayslot_ex),
         .link_addr_i(link_addr_ex),
         .cnt_o      (ex_cnt_o   ),
         .wd_o       (ex_wd_o    ),
@@ -262,6 +265,4 @@ module openmips(
         .stall_o(stall)
     );
 
-
-    
 endmodule
