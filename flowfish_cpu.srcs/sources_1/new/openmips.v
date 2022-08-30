@@ -104,6 +104,7 @@ module openmips(
     
     pc_reg pc_reg0(
         .clk(clk), .rst(rst), .pc(pc), .ce(rom_ce_o),
+        .stall_i(stall),
         .branch_flag_i(branch_flag), 
         .branch_target_address_i(branch_target_address)
     );
@@ -204,7 +205,7 @@ module openmips(
         .wreg_o     (ex_wreg_o  ),
         .wdata_o    (ex_wdata_o ),
         .aluop_o    (ex_aluop_o ),
-        .mem_addr_o (mem_addr_o ),
+        .mem_addr_o (ex_mem_addr),
         .reg2_o     (ex_reg2_o  ),
         .stallreq_from_ex(stallreq_from_ex)
     );
@@ -217,7 +218,7 @@ module openmips(
         .ex_wdata     (ex_wdata_o  ),
         .ex_aluop     (ex_aluop_o  ),
         .ex_mem_addr  (ex_mem_addr ),
-        .ex_reg2      (ex_reg2     ),
+        .ex_reg2      (ex_reg2_o   ),
         .mem_wd       (mem_wd_i    ),
         .mem_wreg     (mem_wreg_i  ),
         .mem_wdata    (mem_wdata_i ),
@@ -255,6 +256,7 @@ module openmips(
     );
 
     control control0(
+        .rst(rst),
         .stallreq_from_ex(stallreq_from_ex),
         .stallreq_from_id(stallreq_from_id),
         .stall_o(stall)

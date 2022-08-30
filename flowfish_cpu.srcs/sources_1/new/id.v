@@ -65,7 +65,7 @@ module id(
     wire[4:0] op4 = inst_i[20:16];
     wire[10:0] op5 = inst_i[31:21];
     
-    wire[`RegBus] pc_lus_8;
+    wire[`RegBus] pc_plus_8;
     wire[`RegBus] pc_plus_4;
     wire[`RegBus] imm_sll2_signedext; //?? 
 
@@ -298,7 +298,7 @@ module id(
                 end
                 `EXE_ADDIU: begin
                     wreg_o <= `WriteEnable;
-                    aluop_o <= {2'b00, func};
+                    aluop_o <= {2'b00, inst};
                     alusel_o <= `EXE_RES_ARITHMETIC;
                     reg1_read_o <= `ReadEnable;
                     reg2_read_o <= `ReadDisable;
@@ -316,7 +316,7 @@ module id(
                 end
                 `EXE_J: begin
                     wreg_o <= `WriteDisable;
-                    aluop_o <= {2'b00, func};
+                    aluop_o <= {2'b00, inst};
                     alusel_o <= `EXE_RES_JUMP_BRANCH;
                     reg1_read_o <= 1'b0;
                     reg2_read_o <= 1'b0;
@@ -329,7 +329,7 @@ module id(
                 end
                 `EXE_BEQ: begin
                     wreg_o <= `WriteDisable;
-                    aluop_o <= {2'b00, func};
+                    aluop_o <= {2'b00, inst};
                     alusel_o <= `EXE_RES_JUMP_BRANCH;
                     reg1_read_o <= 1'b1;
                     reg2_read_o <= 1'b1;

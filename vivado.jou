@@ -153,3 +153,61 @@ close_sim
 launch_simulation
 open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
 source openmips_min_spoc_tb.tcl
+close_sim
+launch_simulation
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/data_ram.v
+launch_simulation
+open_wave_config D:/hellightning/Documents/CS-2022-Hardware/flow-fish-cpu/openmips_min_spoc_tb_behav.wcfg
+source openmips_min_spoc_tb.tcl
+update_compile_order -fileset sim_1
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/stall}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/pc_reg0/stall}} 
+relaunch_sim
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/pc_reg0/pc}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/id0/branch_target_address_o}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/id0/reg1_data_i}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/id0/reg2_data_i}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/ex0/logicout}} 
+relaunch_sim
+relaunch_sim
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/regfile1/regs[0]}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/regfile1/regs[2]}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/regfile1/regs[3]}} 
+relaunch_sim
+relaunch_sim
+relaunch_sim
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/ex0/arithmeticres}} 
+relaunch_sim
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/ex0/result_sum}} 
+relaunch_sim
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/ex0/aluop_i}} 
+relaunch_sim
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/id_ex0/ex_aluop}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/id_ex0/id_aluop}} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+log_wave {/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/id0/aluop_o} 
+current_wave_config {openmips_min_spoc_tb_behav.wcfg}
+add_wave {{/openmips_min_spoc_tb/openmips_min_sopc_0/openmips_0/id0/aluop_o}} 
+relaunch_sim
+relaunch_sim
