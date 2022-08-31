@@ -157,7 +157,7 @@ module id(
                                     aluop_o <= {2'b00, func};
 
                                     alusel_o <= `EXE_RES_ARITHMETIC;
-                                    reg1_addr_o <= 1'b1;
+                                    reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
                                 end
@@ -167,7 +167,7 @@ module id(
                                     aluop_o <= {2'b00, func};
 
                                     alusel_o <= `EXE_RES_ARITHMETIC;
-                                    reg1_addr_o <= 1'b1;
+                                    reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
                                 end
@@ -177,7 +177,7 @@ module id(
                                     aluop_o <= {2'b00, func};
 
                                     alusel_o <= `EXE_RES_ARITHMETIC;
-                                    reg1_addr_o <= 1'b1;
+                                    reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
                                 end
@@ -187,7 +187,7 @@ module id(
                                     aluop_o <= {2'b00, func};
 
                                     alusel_o <= `EXE_RES_ARITHMETIC;
-                                    reg1_addr_o <= 1'b1;
+                                    reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
                                 end
@@ -197,7 +197,7 @@ module id(
                                     aluop_o <= {2'b00, func};
 
                                     alusel_o <= `EXE_RES_ARITHMETIC;
-                                    reg1_addr_o <= 1'b1;
+                                    reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
                                 end
@@ -207,7 +207,7 @@ module id(
                                     aluop_o <= {2'b00, func};
 
                                     alusel_o <= `EXE_RES_ARITHMETIC;
-                                    reg1_addr_o <= 1'b1;
+                                    reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid <= `InstValid;
                                 end
@@ -271,7 +271,7 @@ module id(
                 end
                 `EXE_LUI: begin
                     wreg_o <= `WriteEnable;
-                    aluop_o <= `EXE_XOR_OP;
+                    aluop_o <= `EXE_OR_OP;
                     alusel_o <= `EXE_RES_LOGIC;
                     reg1_read_o <= 1'b1;
                     reg2_read_o <= 1'b0;
