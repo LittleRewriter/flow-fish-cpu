@@ -69,6 +69,8 @@
 `define EXE_SLL_OP      8'b00000000
 `define EXE_SRL_OP      8'b00000010
 `define EXE_SRA_OP      8'b00000011
+`define EXE_LW_OP       8'b01100011
+`define EXE_SW_OP       8'b01101011
 // Alu sel
 `define EXE_RES_LOGIC   3'b001
 `define EXE_RES_MOV     3'b011

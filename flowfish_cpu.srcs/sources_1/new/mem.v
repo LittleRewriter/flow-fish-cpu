@@ -63,25 +63,24 @@ module mem(
         end else if(stall_i[4] == 1'b0) begin
             wd_o <= wd_i;
             wreg_o <= wreg_i;
-            wdata_o <= wdata_i;
-            mem_addr_o <= `ZeroWord;
-            mem_we <= `WriteDisable;
-            mem_ce_o <= `ChipDisable;
             case (aluop_i)
-                `EXE_LW: begin
+                `EXE_LW_OP: begin
                     mem_addr_o <= mem_addr_i;
                     mem_we <= `WriteDisable;
                     wdata_o <= mem_data_i;
                     mem_ce_o <= `ChipEnable;
                 end 
-                `EXE_SW: begin
+                `EXE_SW_OP: begin
                     mem_addr_o <= mem_addr_i;
                     mem_we <= `WriteEnable;
                     mem_data_o <= reg2_i;
                     mem_ce_o <= `ChipEnable;
                 end
                 default: begin
-                    
+                    wdata_o <= wdata_i;
+                    mem_addr_o <= `ZeroWord;
+                    mem_we <= `WriteEnable;
+                    mem_ce_o <= `ChipDisable;
                 end
             endcase
         end

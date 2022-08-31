@@ -54,8 +54,10 @@ module ex(
     wire[`RegBus] reg2_i_mux;
     wire[`RegBus] reg1_i_not;
     wire[`RegBus] result_sum;
+    wire[31:0] t1;
 
     assign aluop_o = aluop_i;
+    assign t1 = {{16{inst_i[15]}}, inst_i[15:0]};
     assign mem_addr_o = reg1_i + {{16{inst_i[15]}}, inst_i[15:0]};
     assign reg2_o = reg2_i;
 
@@ -162,8 +164,8 @@ module ex(
 
     always @(*) begin
         wd_o <= wd_i;
-        if((aluop_i == {2'b00, `FUNC_ADD})||(aluop_i == {2'b00, `FUNC_SUB})||
-        (aluop_i == {2'b00, `EXE_ADDI})) begin
+        if(((aluop_i == {2'b00, `FUNC_ADD})||(aluop_i == {2'b00, `FUNC_SUB})||
+        (aluop_i == {2'b00, `EXE_ADDI})) && ov_sum == 1'b1) begin
             wreg_o <= `WriteDisable;
         end else begin
             wreg_o <= wreg_i;

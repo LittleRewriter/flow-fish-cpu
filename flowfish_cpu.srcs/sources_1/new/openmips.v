@@ -73,6 +73,7 @@ module openmips(
     wire mem_wreg_o;
     wire[`RegAddrBus] mem_wd_o;
     wire[`RegBus] mem_wdata_o;
+    wire[`AluOpBus] mem_aluop_i;
     
     wire wb_wreg_i;
     wire[`RegAddrBus] wb_wd_i;

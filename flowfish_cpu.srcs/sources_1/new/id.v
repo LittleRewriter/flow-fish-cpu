@@ -291,7 +291,7 @@ module id(
                 end
                 `EXE_ADDI: begin
                     wreg_o <= `WriteEnable;
-                    aluop_o <= {2'b00, func};
+                    aluop_o <= {2'b00, inst};
                     alusel_o <= `EXE_RES_ARITHMETIC;
                     reg1_read_o <= `ReadEnable;
                     reg2_read_o <= `ReadDisable;
@@ -348,7 +348,7 @@ module id(
                 end
                 `EXE_LW:begin
                     wreg_o <= `WriteEnable;
-                    aluop_o <= `EXE_LW;
+                    aluop_o <= `EXE_LW_OP;
                     alusel_o <= `EXE_RES_LOAD_STORE;
                     reg1_read_o <= `ReadEnable;
                     reg2_read_o <= `ReadDisable;
@@ -357,7 +357,7 @@ module id(
                 end
                 `EXE_SW: begin
                     wreg_o <=`WriteDisable;
-                    aluop_o <= `EXE_SW;
+                    aluop_o <= `EXE_SW_OP;
                     alusel_o <= `EXE_RES_LOAD_STORE;
                     reg1_read_o <= `ReadEnable;
                     reg2_read_o <= `ReadEnable;

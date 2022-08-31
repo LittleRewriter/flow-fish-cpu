@@ -60,8 +60,8 @@ module openmips_min_sopc(
         .ce     (ram_ce     ),
         .we     (ram_we     ),
         .addr   (ram_addr   ),
-        .data_i (ram_data_i ),
-        .data_o (ram_data_o )
+        .data_i (ram_data_o ),
+        .data_o (ram_data_i )
     );
     
     
