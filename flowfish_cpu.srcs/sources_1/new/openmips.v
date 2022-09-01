@@ -22,19 +22,18 @@
 
 module openmips(
     input wire clk,
-    input wire rst,
-    input wire[`RegBus] rom_data_i,
-    output wire[`RegBus] rom_addr_o,
-    output wire rom_ce_o,
-
-    input wire[`DataBus] ram_data_i,
-    output wire[`DataAddrBus] ram_addr_o,
-    output wire[`DataBus] ram_data_o,
-    output wire ram_we_o,
-    output wire ram_ce_o,
-    // the following is debug output
-    output wire[5:0] debug_stall
+    input wire rst
     );
+    
+    wire[`RegBus] rom_data_i;
+    wire[`RegBus] rom_addr_o;
+    wire rom_ce_o;
+
+    wire[`DataBus] ram_data_i;
+    wire[`DataAddrBus] ram_addr_o;
+    wire[`DataBus] ram_data_o;
+    wire ram_we_o;
+    wire ram_ce_o;
     
     wire[`InstAddrBus] pc;
     wire[`InstAddrBus] id_pc_i;
@@ -99,8 +98,6 @@ module openmips(
     wire is_in_delayslot_back;
     wire is_in_delayslot_ex;
 
-    // the following is debug output assign
-    assign debug_stall = stall;
     // kokomade
     
     pc_reg pc_reg0(
@@ -121,6 +118,29 @@ module openmips(
         .id_pc(id_pc_i),
         .id_inst(id_inst_i)
     );    
+    
+    /*
+    inst_rom inst_rom_0(
+        .ce(rom_ce_o),
+        .addr(rom_addr_o),
+        .inst(rom_data_i)
+    );*/
+    
+    blk_mem_gen_0 blk_mem_gen0(
+        .clka   (clk        ),
+        .ena    (rom_ce_o   ),
+        .addra  (rom_addr_o ),
+        .douta  (rom_data_i )
+    );
+
+    data_ram data_ram_0(
+    	.clk    (clk        ),
+        .ce     (ram_ce_o   ),
+        .we     (ram_we_o   ),
+        .addr   (ram_addr_o ),
+        .data_i (ram_data_o ),
+        .data_o (ram_data_i )
+    );
 
     id id0(
     	.rst                      (rst                      ),

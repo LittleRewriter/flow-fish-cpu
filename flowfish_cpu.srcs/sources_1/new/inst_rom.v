@@ -4,9 +4,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 2022/08/23 21:01:14
+// Create Date: 2022/08/24 10:57:25
 // Design Name: 
-// Module Name: mem_wb
+// Module Name: inst_rom
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,21 +20,22 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module inst_rom (
+
+module inst_rom(
     input wire ce,
     input wire[`InstAddrBus] addr,
     output reg[`InstBus] inst
-);
-
-    reg[`InstBus] inst_mem[`InstMemNum-1:0];
-
-    // initialize the inst_rom
-
+    );
+    
+    reg[`InstBus] inst_mem[0:`InstMemNum - 1];
+    
+    initial $readmemh("d:/LR/FPGA/flow-fish-cpu/flowfish_cpu.srcs/sim_1/new/inst_rom.data", inst_mem);
+    
     always @(*) begin
-        if(ce == `ChipDisable) begin
+        if (ce == `ChipDisable) begin
             inst <= `ZeroWord;
         end else begin
-            // equals to shift left to div 4(from word to byte)
+            // get the high log n - 2 bits
             inst <= inst_mem[addr[`InstMemNumLog2+1:2]];
         end
     end

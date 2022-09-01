@@ -1,1 +1,1 @@
--wto "9d1fc59a27024c2a8a6c386b10da21d5" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "openmips_min_spoc_tb_behav" "xil_defaultlib.openmips_min_spoc_tb" "xil_defaultlib.glbl" -log "elaborate.log" 
+-wto "9d1fc59a27024c2a8a6c386b10da21d5" --incr --debug "typical" --relax --mt "2" -L "blk_mem_gen_v8_4_4" -L "xil_defaultlib" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "openmips_min_spoc_tb_behav" "xil_defaultlib.openmips_min_spoc_tb" "xil_defaultlib.glbl" -log "elaborate.log" 
