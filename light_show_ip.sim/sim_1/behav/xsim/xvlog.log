@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/LR/FPGA/light_show/light_show_ip.srcs/sources_1/new/led.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module led
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/LR/FPGA/light_show/light_show_ip.srcs/sources_1/new/single_led.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module single_led
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/LR/FPGA/light_show/light_show_ip.srcs/sources_1/new/time_div.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module time_div
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/LR/FPGA/light_show/light_show_ip.srcs/sim_1/new/led_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module led_tb

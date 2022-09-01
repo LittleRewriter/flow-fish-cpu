@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../light_show_ip.srcs/sources_1/new/led.v" \
+"../../../../light_show_ip.srcs/sources_1/new/single_led.v" \
+"../../../../light_show_ip.srcs/sources_1/new/time_div.v" \
+"../../../../light_show_ip.srcs/sim_1/new/led_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

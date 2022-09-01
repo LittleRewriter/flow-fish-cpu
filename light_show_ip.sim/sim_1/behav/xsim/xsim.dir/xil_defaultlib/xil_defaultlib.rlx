@@ -1,0 +1,9 @@
+0.6
+2019.2
+Nov  6 2019
+21:57:16
+D:/LR/FPGA/light_show/light_show_ip.sim/sim_1/behav/xsim/glbl.v,1573089660,verilog,,,,glbl,,,,,,,,
+D:/LR/FPGA/light_show/light_show_ip.srcs/sim_1/new/led_tb.v,1661929262,verilog,,,,led_tb,,,,,,,,
+D:/LR/FPGA/light_show/light_show_ip.srcs/sources_1/new/led.v,1662037081,verilog,,D:/LR/FPGA/light_show/light_show_ip.srcs/sources_1/new/single_led.v,,led,,,,,,,,
+D:/LR/FPGA/light_show/light_show_ip.srcs/sources_1/new/single_led.v,1662037107,verilog,,D:/LR/FPGA/light_show/light_show_ip.srcs/sources_1/new/time_div.v,,single_led,,,,,,,,
+D:/LR/FPGA/light_show/light_show_ip.srcs/sources_1/new/time_div.v,1662023355,verilog,,D:/LR/FPGA/light_show/light_show_ip.srcs/sim_1/new/led_tb.v,,time_div,,,,,,,,
