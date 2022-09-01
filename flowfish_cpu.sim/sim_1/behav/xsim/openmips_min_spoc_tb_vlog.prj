@@ -1,6 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib "D:/LR/FPGA/flow-fish-cpu/flowfish_cpu.srcs/sources_1/new/defines.vh" --include "../../../../flowfish_cpu.srcs/sources_1/new" \
-"../../../../flowfish_cpu.srcs/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v" \
+"../../../../flowfish_cpu.srcs/sources_1/ip/inst_rom/sim/inst_rom.v" \
 "../../../../flowfish_cpu.srcs/sources_1/new/control.v" \
 "../../../../flowfish_cpu.srcs/sources_1/new/data_ram.v" \
 "../../../../flowfish_cpu.srcs/sources_1/new/ex.v" \

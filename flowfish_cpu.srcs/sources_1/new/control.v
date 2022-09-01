@@ -17,9 +17,9 @@ module control (
         end else if(stallreq_from_mem == 1'b1) begin
             stall_o <= 6'b011111;
         end else if(stallreq_from_id == 1'b1) begin
-            stall_o <= 6'b001111;
-        end else if(stallreq_from_ex == 1'b1) begin
             stall_o <= 6'b000111;
+        end else if(stallreq_from_ex == 1'b1) begin
+            stall_o <= 6'b001111;
         end else if(stallreq_from_if == 1'b1) begin
             stall_o <= 6'b000111;
         end else begin

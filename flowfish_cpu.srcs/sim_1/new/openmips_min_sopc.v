@@ -21,14 +21,23 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module openmips_min_sopc(
+module flowfishmips_min_sopc(
     input wire clk,
     input wire rst
     );
     
-    openmips openmips_0(
+    wire [1:0] sel_a;
+    wire [6:0] enc_a;
+    wire [1:0] sel_b;
+    wire [6:0] enc_b;
+    
+    top top_0(
     	.clk        (clk        ),
-        .rst        (rst        )
+        .rst        (rst        ),
+        .sel_a      (sel_a      ),
+        .enc_a      (enc_a      ),
+        .sel_b      (sel_b      ),
+        .enc_b      (enc_b      )
     );
     
     

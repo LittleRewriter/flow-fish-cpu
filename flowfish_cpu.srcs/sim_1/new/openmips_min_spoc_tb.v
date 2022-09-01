@@ -21,7 +21,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module openmips_min_spoc_tb();
+module flowfishmips_min_spoc_tb();
     reg CLOCK_50;
     reg rst;
     
@@ -33,10 +33,10 @@ module openmips_min_spoc_tb();
     initial begin
         rst = `RstEnable;
         #195 rst = `RstDisable;
-        #1000 $stop;
+        #10000 $stop;
     end
     
-    openmips_min_sopc openmips_min_sopc_0(
+    flowfishmips_min_sopc flowfishmips_min_sopc_0(
         .clk(CLOCK_50),
         .rst(rst)
     );

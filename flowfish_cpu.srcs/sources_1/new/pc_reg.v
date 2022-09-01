@@ -46,7 +46,7 @@ module pc_reg(
             if(branch_flag_i == 1'b1) begin
                 pc <= branch_target_address_i;
             end else begin
-                pc <= pc + 4'h1;
+                pc <= pc + 4'h4;
             end
         end
     end

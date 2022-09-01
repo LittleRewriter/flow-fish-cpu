@@ -1,0 +1,1 @@
+-wto "9d1fc59a27024c2a8a6c386b10da21d5" --incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "blk_mem_gen_v8_4_4" -L "dist_mem_gen_v8_0_13" -L "unisims_ver" -L "unimacro_ver" -L "secureip" -L "xpm" --snapshot "flowfishmips_min_spoc_tb_behav" "xil_defaultlib.flowfishmips_min_spoc_tb" "xil_defaultlib.glbl" -log "elaborate.log" 

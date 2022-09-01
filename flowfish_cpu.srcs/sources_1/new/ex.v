@@ -29,11 +29,9 @@ module ex(
     input wire[`RegBus] reg2_i,
     input wire[`RegAddrBus] wd_i,
     input wire wreg_i,
-    input wire[1:0] cnt_i, // at which period
     input wire[`InstBus] inst_i, 
     input wire[`RegBus] link_addr_i,
     input wire is_in_delayslot_i,
-    output wire[1:0] cnt_o, // next period
     output reg[`RegAddrBus] wd_o,
     output reg wreg_o,
     output reg[`RegBus] wdata_o,

@@ -82,7 +82,7 @@ module id(
     reg stallreq_for_reg2_loadrelate; // reg2 has load havard
     wire pre_inst_is_load;  // whether pre is load
 
-    assign pre_inst_is_load = ((ex_aluop_i == `EXE_LW) || (ex_aluop_i == `EXE_SW)) ? 1'b1 : 1'b0;
+    assign pre_inst_is_load = (ex_aluop_i == `EXE_LW) ? 1'b1 : 1'b0;
     
     always @(*) begin
         if (rst == `RstEnable) begin
@@ -369,21 +369,35 @@ module id(
             endcase
 
             if(op5 == 11'h0) begin
-                wreg_o <= `WriteEnable;
-                alusel_o <= `EXE_RES_SHIFT;
-                reg1_read_o <= 1'b0;
-                reg2_read_o <= 1'b1;
-                imm[4:0] <= inst_i[10:6];
-                wd_o <= inst_i[15:11];
-                instvalid <= `InstValid;
                 case (func)
                     `FUNC_SLL: begin
+                        wreg_o <= `WriteEnable;
+                        alusel_o <= `EXE_RES_SHIFT;
+                        reg1_read_o <= 1'b0;
+                        reg2_read_o <= 1'b1;
+                        imm[4:0] <= inst_i[10:6];
+                        wd_o <= inst_i[15:11];
+                        instvalid <= `InstValid;
                         aluop_o <= `EXE_SLL_OP;
                     end
                     `FUNC_SRL: begin
+                        wreg_o <= `WriteEnable;
+                        alusel_o <= `EXE_RES_SHIFT;
+                        reg1_read_o <= 1'b0;
+                        reg2_read_o <= 1'b1;
+                        imm[4:0] <= inst_i[10:6];
+                        wd_o <= inst_i[15:11];
+                        instvalid <= `InstValid;
                         aluop_o <= `EXE_SRL_OP;
                     end
                     `FUNC_SRA: begin
+                        wreg_o <= `WriteEnable;
+                        alusel_o <= `EXE_RES_SHIFT;
+                        reg1_read_o <= 1'b0;
+                        reg2_read_o <= 1'b1;
+                        imm[4:0] <= inst_i[10:6];
+                        wd_o <= inst_i[15:11];
+                        instvalid <= `InstValid;
                         aluop_o <= `EXE_SRA_OP;
                     end 
                     default: begin 

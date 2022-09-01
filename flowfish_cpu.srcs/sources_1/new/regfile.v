@@ -32,7 +32,8 @@ module regfile(
     output reg [`RegBus] rdata1,
     input wire[`RegAddrBus] raddr2,
     input wire re2,
-    output reg [`RegBus] rdata2
+    output reg [`RegBus] rdata2,
+    output wire[31:0] reg_data_o
     );
     
     reg[`RegBus] regs[0:`RegNum-1];
@@ -81,5 +82,7 @@ module regfile(
             rdata2 <= `ZeroWord;
         end
     end
+    
+    assign reg_data_o = ((|regs[10]) === 1'b1) ? regs[10] : 32'b0;
     
 endmodule

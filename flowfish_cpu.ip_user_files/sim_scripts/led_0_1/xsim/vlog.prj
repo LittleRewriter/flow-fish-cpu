@@ -1,0 +1,9 @@
+verilog xil_defaultlib  \
+"../../../../flowfish_cpu.srcs/sources_1/ip/led_0_1/src/single_led.v" \
+"../../../../flowfish_cpu.srcs/sources_1/ip/led_0_1/src/time_div.v" \
+"../../../../flowfish_cpu.srcs/sources_1/ip/led_0_1/src/led.v" \
+"../../../../flowfish_cpu.srcs/sources_1/ip/led_0_1/sim/led_0.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
